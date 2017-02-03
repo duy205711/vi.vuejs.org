@@ -13,11 +13,11 @@ Sau khi khởi động server dev, truy cập vào địa chỉ `localhost:4000`
 
 ## Dịch sang những ngôn ngữ khác
 
-Hiện tại việc dịch trang [vuejs.org](https://vuejs.org) sang những ngôn ngữ khác như Trung Quốc, Nhật Bản, Hàn Quốc đang được thực hiện và duy trì bởi những tổ chức hoặc cá nhân.
+Hiện tại việc dịch trang [vuejs.org](https://vuejs.org) sang những ngôn ngữ khác như Trung Quốc, Nhật Bản, Hàn Quốc đang được thực hiện và duy trì bởi những tổ chức hoặc cá nhân. Tất cả đều là những repo được folk từ repo gốc [https://github.com/vuejs/vuejs.org](https://github.com/vuejs/vuejs.org).
 
-Tất cả đều là những repo được folk từ repo gốc [https://github.com/vuejs/vuejs.org](https://github.com/vuejs/vuejs.org). Repo **vi.vuejs.org** cũng không ngoại lệ.
+Chúng tôi cũng folk từ repo chính và bắt đầu dịch sang Tiếng Việt.
 
-## Cộng tác trong việc dịch sang Tiếng Việt
+## Cộng tác
 
 Nếu bạn mong muốn được cộng tác trong việc dịch trang này sang Tiếng Việt, bạn chỉ cần folk repo này và tạo một issue với tiêu đề "Cộng tác dịch sang Tiếng Việt". 
 
