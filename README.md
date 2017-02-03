@@ -15,7 +15,7 @@ Sau khi khởi động server dev, truy cập vào địa chỉ `localhost:4000`
 
 Hiện tại việc dịch trang [vuejs.org](https://vuejs.org) sang những ngôn ngữ khác như Trung Quốc, Nhật Bản, Hàn Quốc đang được thực hiện và duy trì bởi những tổ chức hoặc cá nhân. Tất cả đều là những repo được folk từ repo gốc [https://github.com/vuejs/vuejs.org](https://github.com/vuejs/vuejs.org).
 
-Chúng tôi cũng folk từ repo chính và bắt đầu dịch sang Tiếng Việt.
+Chúng tôi cũng folk từ repo gốc và dịch từ Tiếng Anh sang Tiếng Việt.
 
 ## Cộng tác
 
@@ -25,8 +25,8 @@ Việc tạo issue này chỉ đơn giản là thông báo cho mọi người bi
 
 ## Lời kết
 
-Với mong muốn góp một chút công sức vào việc phát triển cộng đồng Vuejs Việt Nam. Chúng tối hi vọng sẽ khiến Vuejs ngày càng phổ biến hơn tại Việt Nam.
+Với mong muốn góp một chút công sức vào việc phát triển Cộng Đồng Vuejs Việt Nam. Chúng tối hi vọng Vuejs ngày càng phổ biến hơn tại Việt Nam.
 
-Chúng tôi rất hoanh nghênh sự công tác của các bạn.
+Một lần nữa chúng tôi rất hoanh nghênh sự công tác của các bạn.
 
 Cảm ơn các bạn!
