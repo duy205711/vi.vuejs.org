@@ -1,10 +1,7 @@
-# vuejs.org
+# vi.vuejs.org
 
-This site is built with [hexo](http://hexo.io/). Site content is written in Markdown format located in `src`. Pull requests welcome!
-
-## Developing
-
-Start a dev server at `localhost:4000`:
+Trang được xây dựng dựa trên [hexo](http://hexo.io/) (Hexo là một blog framework). Nội dung của trang viết dưới dạng Markdown và được chứa trong thư mục `src`.
+## Phát triển
 
 ```
 $ npm install -g hexo-cli
@@ -12,49 +9,24 @@ $ npm install
 $ hexo server
 ```
 
-## On Translations
+Sau khi khởi động server dev, truy cập vào địa chỉ `localhost:4000`
 
-Translation for this documentation project are currently mantained in separate repositories forked from this original one.
+## Dịch sang những ngôn ngữ khác
 
-### Mandarin
+Hiện tại việc dịch trang [vuejs.org](https://vuejs.org) sang những ngôn ngữ khác như Trung Quốc, Nhật Bản, Hàn Quốc đang được thực hiện và duy trì bởi những tổ chức hoặc cá nhân.
 
-* Translation Repo - [/vuejs/cn.vuejs.org](https://github.com/vuejs/cn.vuejs.org)
+Tất cả đều là những repo được folk từ repo gốc [https://github.com/vuejs/vuejs.org](https://github.com/vuejs/vuejs.org). Repo **vi.vuejs.org** cũng không ngoại lệ.
 
-### Japanese
+## Cộng tác trong việc dịch sang Tiếng Việt
 
-Japanese translation is maintained by [Vue.js japan user group](https://github.com/vuejs-jp)
+Nếu bạn mong muốn được cộng tác trong việc dịch trang này sang Tiếng Việt, bạn chỉ cần folk repo này và tạo một issue với tiêu đề "Cộng tác dịch sang Tiếng Việt". 
 
-* Translation Repo - [/vuejs/jp.vuejs.org](https://github.com/vuejs/jp.vuejs.org)
-* Primary maintainer - [kazupon](https://github.com/kazupon)
+Việc tạo issue này chỉ đơn giản là thông báo cho mọi người biết bạn đang trong quá trình thực hiện phần dịch của mình.
 
-### Russian
+## Lời kết
 
-Russian translation is maintained by Translation Gang.
+Với mong muốn góp một chút công sức vào việc phát triển cộng đồng Vuejs Việt Nam. Chúng tối hi vọng sẽ khiến Vuejs ngày càng phổ biến hơn tại Việt Nam.
 
-* Translation Repo — [/translation-gang/ru.vuejs.org](https://github.com/translation-gang/ru.vuejs.org)
-* Primary maintainer - [Grigoriy Beziuk](https://gbezyuk.github.io)
+Chúng tôi rất hoanh nghênh sự công tác của các bạn.
 
-### Italian
-
-* Translation Repo - [/vuejs/it.vuejs.org](https://github.com/vuejs/it.vuejs.org)
-
-### Korean
-
-Korean translation is maintained by [Vue.js Korean User group](https://github.com/vuejs-kr).
-
-* Translation Repo - [/vuejs-kr/kr.vuejs.org](https://github.com/vuejs-kr/kr.vuejs.org)
-* Primary maintainer - [ChangJoo Park](https://github.com/ChangJoo-Park)
-
-### French
-
-French translation is maintained by Vuejs-FR.
-
-* Translation Repo — [/vuejs-fr/vuejs.org](https://github.com/vuejs-fr/vuejs.org)
-
-### Want to help with the translation?
-
-If you feel okay with translating sorta alone, just fork the repo, create a "work-in-progress" issue to inform others that you're doing the translation, and just go on.
-
-If you are more of a team player, maybe Translation Gang is for you? Then just let us know somehow that you're ready to join this international open-source translators community. Feel free to contact [Grigoriy Beziuk](https://gbezyuk.github.io) or anybody else from [the team](https://github.com/orgs/translation-gang/people).
-
-And thank you in advance ;)
+Cảm ơn các bạn!
