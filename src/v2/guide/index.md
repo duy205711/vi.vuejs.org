@@ -6,7 +6,7 @@ order: 2
 
 ## Vue.js là gì?
 
-Vue (phát âm là /vjuː/, giống **view**) là một **progressive framework** dùng để xây dựng giao diện người dùng ( UI ). Không giống những framework khổng lồ khác ( những framework hỗ trợ đầy đủ từ UI đến model, controller, database,... ). Về cốt lõi, Vue chỉ tập trung vào lớp view mà thôi, và nó rất dễ để làm quen và tích hợp với các thư viện khác hoặc các project có sẵn. Mặt khác, Vue lại chứa đựng một sức mạnh rất lớn trong việc xây dựng Single-Page Applications khi được kết hợp với [công cụ build](single-file-components.html) và [các thư viện/component được xây dựng bởi cộng đồng](https://github.com/vuejs/awesome-vue#libraries--plugins).
+Vue (phát âm là /vjuː/, giống **view**) là một **progressive framework** dùng để xây dựng giao diện người dùng ( UI ). Không giống các monolithic framework ( những framework hỗ trợ đầy đủ tất cả mọi thứ cần có để xây dựng app, trong một framework duy nhất ). Về cốt lõi, Vue chỉ tập trung vào lớp view mà thôi, và nó rất dễ để làm quen và tích hợp với các thư viện khác hoặc các project có sẵn. Mặt khác, Vue lại chứa đựng một sức mạnh rất lớn trong việc xây dựng Single-Page Applications khi được kết hợp với [công cụ build](single-file-components.html) và [các thư viện/component được xây dựng bởi cộng đồng](https://github.com/vuejs/awesome-vue#libraries--plugins).
 
 Nếu bạn là một frontend developer có kinh nghiệm và muốn so sánh Vue với các thư viện/framework khác thì hãy xem ở đây [So sánh Vue với các framework khác](comparison.html).
 
