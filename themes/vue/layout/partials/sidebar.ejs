@@ -4,14 +4,14 @@
     </ul>
     <div class="list">
         <div class="main-sponsor">
-            <span>Sponsored By</span><br>
+            <span>Được tài trợ bởi</span><br>
             <a href="http://www.thedifferenceengine.io/" target="_blank"
                 style="background-color: #f3f3f3; padding: 10px 0">
                 <img src="/images/tde.png">
             </a>
         </div>
         <a class="become-backer" href="/support-vuejs">
-            Become a Backer
+            Trở thành Backer
         </a>
         <h2>
             <%- type === 'api' ? 'API' : (type.charAt(0).toUpperCase() + type.slice(1)) %>
@@ -29,10 +29,10 @@
                 <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
                 <% if (type === 'guide') { %>
                     <% if (fileName === 'installation') { %>
-                      <li><h3>Essentials</h3></li>
+                      <li><h3>Cơ bản</h3></li>
                     <% } %>
                     <% if (fileName === 'reactivity') { %>
-                      <li><h3>Advanced</h3></li>
+                      <li><h3>Nâng cao</h3></li>
                     <% } %>
                     <% if (fileName === 'migration') { %>
                       <li><h3>Migrating</h3></li>
