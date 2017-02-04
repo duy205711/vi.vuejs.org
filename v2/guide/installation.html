@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cài đặt — Vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Cài đặt — Vue.js">
+        <meta property="og:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
+        <meta property="og:image" content="https://vuejs.senviet.org/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Cài đặt — Vue.js">
+        <meta name="twitter:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
+        <meta name="twitter:image" content="https://vuejs.senviet.org/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "guide"</script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-52973734-7', 'vuejs.senviet.org');
+          ga('send', 'pageview');
+        </script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link current">Hướng dẫn</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link">Ví dụ</a></li>
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">Ecosystem</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>Giúp đỡ</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">Templates</a></li>
+    </ul></li>
+    <li><h4>Tin tức</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">Việc làm</a></li>
+    </ul></li>
+    <li><h4>Core Plugins</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>Resource Lists</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">Repos Chính Thức</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Ngôn ngữ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link current">Hướng dẫn</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link">Ví dụ</a></li>
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">Ecosystem</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>Giúp đỡ</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">Templates</a></li>
+    </ul></li>
+    <li><h4>Tin tức</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">Việc làm</a></li>
+    </ul></li>
+    <li><h4>Core Plugins</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>Resource Lists</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">Repos Chính Thức</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Ngôn ngữ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>Được tài trợ bởi</span><br>
+            <a href="http://www.thedifferenceengine.io/" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/tde.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-vuejs">
+            Trở thành Backer
+        </a>
+        <h2>
+            Phiên bản
+            
+                <select class="version-select">
+                    <option value="SELF" selected>2.0</option>
+                    <option value="v1">1.0</option>
+                    <option value="012">0.12</option>
+                    <option value="011">0.11</option>
+                </select>
+            
+        </h2>
+        <ul class="menu-root">
+            
+                
+                
+                    
+                      <li><h3>Cơ bản</h3></li>
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/installation.html" class="sidebar-link current">Cài đặt</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/index.html" class="sidebar-link">Giới thiệu</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/instance.html" class="sidebar-link">The Vue Instance</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/syntax.html" class="sidebar-link">Template Syntax</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/computed.html" class="sidebar-link">Computed Properties and Watchers</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/class-and-style.html" class="sidebar-link">Class and Style Bindings</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/conditional.html" class="sidebar-link">Conditional Rendering</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/list.html" class="sidebar-link">List Rendering</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/events.html" class="sidebar-link">Event Handling</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/forms.html" class="sidebar-link">Form Input Bindings</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/components.html" class="sidebar-link">Components</a>
+                </li>
+            
+                
+                
+                    
+                    
+                      <li><h3>Nâng cao</h3></li>
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/reactivity.html" class="sidebar-link">Reactivity in Depth</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/transitions.html" class="sidebar-link">Transition Effects</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/transitioning-state.html" class="sidebar-link">Transitioning State</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/render-function.html" class="sidebar-link">Render Functions</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/custom-directive.html" class="sidebar-link">Custom Directives</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/mixins.html" class="sidebar-link">Mixins</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/plugins.html" class="sidebar-link">Plugins</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/single-file-components.html" class="sidebar-link">Single File Components</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/deployment.html" class="sidebar-link">Production Deployment Tips</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/routing.html" class="sidebar-link">Routing</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/state-management.html" class="sidebar-link">State Management</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/unit-testing.html" class="sidebar-link">Unit Testing</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/ssr.html" class="sidebar-link">Server-Side Rendering</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/typescript.html" class="sidebar-link">TypeScript Support</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                      <li><h3>Migrating</h3></li>
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration.html" class="sidebar-link">Migration from Vue 1.x</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration-vue-router.html" class="sidebar-link">Migration from Vue Router 0.7.x</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                      <li><h3>Meta</h3></li>
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/comparison.html" class="sidebar-link">Comparison with Other Frameworks</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/join.html" class="sidebar-link">Join the Vue.js Community!</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guide with-sidebar installation-guide">
+    
+      <div id="ad">
+  <!-- <span>Được tài trợ bởi</span><br>
+  <a href="http://www.thedifferenceengine.io/" target="_blank"
+    style="background-color: rgba(0,0,0,.85); padding: 10px 0">
+    <img src="/images/tde.png">
+  </a> -->
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+</div>
+
+    
+    
+      <h1>Cài đặt</h1>
+    
+    <h3 id="Tuong-thich-trinh-duyet"><a href="#Tuong-thich-trinh-duyet" class="headerlink" title="Tương thích trình duyệt"></a>Tương thích trình duyệt</h3><p>Vue <strong>không</strong> hỗ trợ trình duyệt IE từ phiên bản 8 trở xuống, vì nó sử dụng những tính năng của ECMAScript5 mà trong IE8 không có. Tuy nhiên Vue sẽ hỗ trợ tất cả các <a href="http://caniuse.com/#feat=es5" target="_blank" rel="external">trình duyệt tương thích với ECMAScript 5</a>.</p>
+<h3 id="Nhung-ghi-chu-ve-viec-phat-hanh"><a href="#Nhung-ghi-chu-ve-viec-phat-hanh" class="headerlink" title="Những ghi chú về việc phát hành"></a>Những ghi chú về việc phát hành</h3><p>Những thông tin chi tiết về việc phát hành cho từng phiên bản được ghi chú đầy đủ trên  <a href="https://github.com/vuejs/vue/releases" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Standalone"><a href="#Standalone" class="headerlink" title="Standalone"></a>Standalone</h2><p>Chỉ cần tải về và chèn vào trong thẻ script. <code>Vue</code> sẽ được đăng kí nhưng một biến global.</p>
+<p class="tip">Không sử dụng phiên bản minified trong quá trình phát triển. Vì bạn sẽ bỏ lỡ tất cả cảnh báo của Vue khi xảy ra những lỗi thường gặp.</p>
+
+<div id="downloads"><br><a class="button" href="/js/vue.js" download="">Dành cho Development</a><span class="light info">Bao gồm đầy đủ cảnh báo và debug mode</span><br><br><a class="button" href="/js/vue.min.js" download="">Dành cho Production</a><span class="light info">Cảnh báo đã được loại bỏ, 25.86kb min+gzip</span><br></div>
+
+<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>Khuyến khích cài đặt theo cách này: <a href="https://unpkg.com/vue/dist/vue.js" target="_blank" rel="external">unpkg</a> (chỉ cần copy đường dẫn), đây sẽ luôn là phiên bản mới nhất trùng khớp với phiên bản được phát hành trên npm. Bạn cũng có thể duyệt xem package của Vue trên npm tại <a href="https://unpkg.com/vue/" target="_blank" rel="external">unpkg.com/vue/</a>.</p>
+<p>Ngoài ra bạn cũng có thể sử dụng <a href="//cdn.jsdelivr.net/vue/2.1.10/vue.js">jsDelivr</a> hoặc <a href="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js">cdnjs</a>, nhưng hai dịch vụ này phải mất một ít thời gian để đồng bộ vì vậy phiên bản mới nhất có thể sẽ chưa được cập nhật kịp thời.</p>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><p>NPM là một phương pháp cài đặt được khuyến khích sử dụng khi xây dựng những ứng dụng lớn với Vue. Nó kết hợp một cách tuyệt vời với các module bundlers như <a href="https://webpack.js.org/" target="_blank" rel="external">Webpack</a> hoặc <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a>. Vue cũng cung cấp accompanying tools for authoring <a href="single-file-components.html">Single File Components</a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># latest stable</span></div><div class="line">$ npm install vue</div></pre></td></tr></table></figure>
+<h3 id="Standalone-vs-Runtime-only-Build"><a href="#Standalone-vs-Runtime-only-Build" class="headerlink" title="Standalone vs. Runtime-only Build"></a>Standalone vs. Runtime-only Build</h3><p>Hiện tại có hai loại build là standalone build và runtime-only build. Sự khác biệt giữa hai loại nằm ở việc standalone build thì bao gồm <strong>trình biên dịch template</strong> còn runtime-only build thì không.</p>
+<p>Trình biên dịch templates có trách nhiệm biên dịch Vue template strings thành các hàm render thuần Javascript. Nếu bạn muốn sử dụng <code>template</code> option, thì bạn cần có trình biên dịch.</p>
+<ul>
+<li><p>Standalone build bao gồm trình biên dịch và hỗ trợ <code>template</code> option. <strong>Nó cũng phụ thuộc vào các API của trình duyệt, vì vậy bạn không thể sử dụng standalone build cho server-side rendering.</strong></p>
+</li>
+<li><p>Runtime-only build không bao gồm trình biên dịch và không hỗ trợ <code>template</code> option. Bạn chỉ có thể sử dụng <code>render</code> option khi sử dụng runtime-only build, tuy nhiên nó có thể hoạt động vói các single-file component, nguyên nhân là do các template của single-file component được biên dịch trước (pre-compiled) vào trong các hàm <code>render</code> trong quá trình build, dung lượng chỉ có 18.01kb min+gzip.</p>
+</li>
+</ul>
+<p>Mặc định, NPM package sẽ xuất ra dưới dạng <strong>runtime-only</strong> build. Để sử dụng standalone build, bạn cần thêm alias dưới đây vào trong phần cấu hình của Webpack:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  <span class="attr">alias</span>: &#123;</div><div class="line">    <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.common.js'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Đối với Browserify, bạn cần thêm một alias vào trong package.json:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="string">"browser"</span>: &#123;</div><div class="line">  <span class="string">"vue"</span>: <span class="string">"vue/dist/vue.common"</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p class="tip">KHÔNG được <code>import Vue from &#39;vue/dist/vue.js&#39;</code> - bởi vì một vài thư viện bên thứ 3 có thể đã import Vue rồi, nếu bạn import như vậy có thể khiến cho app phải tải cả hai dạng là runtime và standalone build cùng lúc và điều này sẽ dấn đến lỗi.</p>
+
+<h3 id="Moi-truong-CSP"><a href="#Moi-truong-CSP" class="headerlink" title="Môi trường CSP"></a>Môi trường CSP</h3><p>Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng <code>new Function()</code> for evaluating expressions. Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.</p>
+<p>Mặt khác, runtime-only build thì hoàn toàn phù hợp cho môi trường CSP. Khi sử dụng runtime-only build với <a href="https://github.com/vuejs-templates/webpack-simple" target="_blank" rel="external">Webpack + vue-loader</a> hoặc <a href="https://github.com/vuejs-templates/browserify-simple" target="_blank" rel="external">Browserify + vueify</a>, những template của bạn sẽ được biên dịch vào trong các hàm <code>render</code>, những hàm đó hoạt động hoàn hảo trong các môi trường CSP.</p>
+<h2 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h2><p>Vue.js cung cấp một <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">CLI - bản chính thức</a> giúp cho việc khởi tạo những Single Page Applications được nhanh chóng hơn. It provides batteries-included build setups for a modern frontend workflow. Chỉ tốn một vài phút để để khởi tạo và chạy với hot-reload, lint-on-save, and production-ready builds:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># install vue-cli</span></div><div class="line">$ npm install --global vue-cli</div><div class="line"><span class="comment"># create a new project using the "webpack" template</span></div><div class="line">$ vue init webpack my-project</div><div class="line"><span class="comment"># install dependencies and go!</span></div><div class="line">$ <span class="built_in">cd</span> my-project</div><div class="line">$ npm install</div><div class="line">$ npm run dev</div></pre></td></tr></table></figure>
+<p class="tip">Việc sử dụng CLI đòi hỏi bạn cần có kiến thức về Node.js và những công cụ build liên quan. Nếu bạn mới làm quen với Vue hoặc những công cụ build dành cho front-end thì chúng tôi đề nghị bạn xem qua <a href="./">hướng dẫn</a> không sử dụng bất kì công cụ build nào trước khi sử dụng CLI.</p>
+
+<h2 id="Dev-Build"><a href="#Dev-Build" class="headerlink" title="Dev Build"></a>Dev Build</h2><p><strong>Quan trọng</strong>: những files được build ra trong thư mục <code>/dist</code> trên Github chỉ được cập nhật mỗi lần phát hành phiên bản mới. Vì vậy nếu muốn sử dụng Vue từ những files này bạn cần phải tự build!</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/vuejs/vue.git node_modules/vue</div><div class="line"><span class="built_in">cd</span> node_modules/vue</div><div class="line">npm install</div><div class="line">npm run build</div></pre></td></tr></table></figure>
+<h2 id="Bower"><a href="#Bower" class="headerlink" title="Bower"></a>Bower</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># latest stable</span></div><div class="line">$ bower install vue</div></pre></td></tr></table></figure>
+<h2 id="AMD-Module-Loaders"><a href="#AMD-Module-Loaders" class="headerlink" title="AMD Module Loaders"></a>AMD Module Loaders</h2><p>Những bản tải về standalone hoặc được cài đặt từ Bower thì đã được wrapped với UMD vì vậy chúng có thể được sử dụng trược tiếp như một AMD module.</p>
+
+    
+      <div class="guide-links">
+        
+        
+          <span style="float:right"><a href="/v2/guide/index.html">Giới thiệu</a> →</span>
+        
+      </div>
+    
+    <div class="footer">
+      Nếu bạn thấy lỗi sai hoặc muốn đóng góp, hãy giúp chúng tôi
+      <a href="https://github.com/vuejs-vn/vi.vuejs.org/blob/master/src/v2/guide/installation.md" target="_blank">
+        sửa trang này Github!
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->        
+        <script src="/js/css.escape.js"></script>
+        <script src="/js/common.js"></script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: 'BH4D9OD16A',
+            apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+            indexName: 'vuejs',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

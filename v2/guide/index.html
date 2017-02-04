@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Giới thiệu — Vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Giới thiệu — Vue.js">
+        <meta property="og:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
+        <meta property="og:image" content="https://vuejs.senviet.org/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Giới thiệu — Vue.js">
+        <meta name="twitter:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
+        <meta name="twitter:image" content="https://vuejs.senviet.org/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "guide"</script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-52973734-7', 'vuejs.senviet.org');
+          ga('send', 'pageview');
+        </script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link current">Hướng dẫn</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link">Ví dụ</a></li>
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">Ecosystem</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>Giúp đỡ</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">Templates</a></li>
+    </ul></li>
+    <li><h4>Tin tức</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">Việc làm</a></li>
+    </ul></li>
+    <li><h4>Core Plugins</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>Resource Lists</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">Repos Chính Thức</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Ngôn ngữ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link current">Hướng dẫn</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link">Ví dụ</a></li>
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">Ecosystem</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>Giúp đỡ</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">Templates</a></li>
+    </ul></li>
+    <li><h4>Tin tức</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">Việc làm</a></li>
+    </ul></li>
+    <li><h4>Core Plugins</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>Resource Lists</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">Repos Chính Thức</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Ngôn ngữ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>Được tài trợ bởi</span><br>
+            <a href="http://www.thedifferenceengine.io/" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/tde.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-vuejs">
+            Trở thành Backer
+        </a>
+        <h2>
+            Phiên bản
+            
+                <select class="version-select">
+                    <option value="SELF" selected>2.0</option>
+                    <option value="v1">1.0</option>
+                    <option value="012">0.12</option>
+                    <option value="011">0.11</option>
+                </select>
+            
+        </h2>
+        <ul class="menu-root">
+            
+                
+                
+                    
+                      <li><h3>Cơ bản</h3></li>
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/installation.html" class="sidebar-link">Cài đặt</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/index.html" class="sidebar-link current">Giới thiệu</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/instance.html" class="sidebar-link">The Vue Instance</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/syntax.html" class="sidebar-link">Template Syntax</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/computed.html" class="sidebar-link">Computed Properties and Watchers</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/class-and-style.html" class="sidebar-link">Class and Style Bindings</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/conditional.html" class="sidebar-link">Conditional Rendering</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/list.html" class="sidebar-link">List Rendering</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/events.html" class="sidebar-link">Event Handling</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/forms.html" class="sidebar-link">Form Input Bindings</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/components.html" class="sidebar-link">Components</a>
+                </li>
+            
+                
+                
+                    
+                    
+                      <li><h3>Nâng cao</h3></li>
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/reactivity.html" class="sidebar-link">Reactivity in Depth</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/transitions.html" class="sidebar-link">Transition Effects</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/transitioning-state.html" class="sidebar-link">Transitioning State</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/render-function.html" class="sidebar-link">Render Functions</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/custom-directive.html" class="sidebar-link">Custom Directives</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/mixins.html" class="sidebar-link">Mixins</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/plugins.html" class="sidebar-link">Plugins</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/single-file-components.html" class="sidebar-link">Single File Components</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/deployment.html" class="sidebar-link">Production Deployment Tips</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/routing.html" class="sidebar-link">Routing</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/state-management.html" class="sidebar-link">State Management</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/unit-testing.html" class="sidebar-link">Unit Testing</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/ssr.html" class="sidebar-link">Server-Side Rendering</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/typescript.html" class="sidebar-link">TypeScript Support</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                      <li><h3>Migrating</h3></li>
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration.html" class="sidebar-link">Migration from Vue 1.x</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration-vue-router.html" class="sidebar-link">Migration from Vue Router 0.7.x</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                      <li><h3>Meta</h3></li>
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/comparison.html" class="sidebar-link">Comparison with Other Frameworks</a>
+                </li>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/join.html" class="sidebar-link">Join the Vue.js Community!</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guide with-sidebar index-guide">
+    
+      <div id="ad">
+  <!-- <span>Được tài trợ bởi</span><br>
+  <a href="http://www.thedifferenceengine.io/" target="_blank"
+    style="background-color: rgba(0,0,0,.85); padding: 10px 0">
+    <img src="/images/tde.png">
+  </a> -->
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+</div>
+
+    
+    
+      <h1>Giới thiệu</h1>
+    
+    <h2 id="Vue-js-la-gi"><a href="#Vue-js-la-gi" class="headerlink" title="Vue.js là gì?"></a>Vue.js là gì?</h2><p>Vue (phát âm là /vjuː/, giống <strong>view</strong>) là một <strong>progressive framework</strong> dùng để xây dựng giao diện người dùng ( UI ). Không giống các monolithic framework ( những framework hỗ trợ đầy đủ tất cả mọi thứ cần có để xây dựng app, trong một framework duy nhất ). Về cốt lõi, Vue chỉ tập trung vào lớp view mà thôi, và nó rất dễ để làm quen và tích hợp với các thư viện khác hoặc các project có sẵn. Mặt khác, Vue lại chứa đựng một sức mạnh rất lớn trong việc xây dựng Single-Page Applications khi được kết hợp với <a href="single-file-components.html">công cụ build</a> và <a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="external">các thư viện/component được xây dựng bởi cộng đồng</a>.</p>
+<p>Nếu bạn là một frontend developer có kinh nghiệm và muốn so sánh Vue với các thư viện/framework khác thì hãy xem ở đây <a href="comparison.html">So sánh Vue với các framework khác</a>.</p>
+<h2 id="Bat-dau"><a href="#Bat-dau" class="headerlink" title="Bắt đầu"></a>Bắt đầu</h2><p class="tip">Các hướng dẫn này đòi hỏi bạn phải có một kiến thức khá vững về HTML, CSS và Javascript. Nếu bạn chỉ mới làm quen với frontend, thì việc tìm hiểu một framework ở ngay giai đoạn đầu tiên này không phải là một ý hay - hãy học những điều cơ bản trước và quay lại sau! Bạn cũng nên làm quen với các framework khác, nhưng điều này không bắt buộc.</p>
+
+<p>Cách đơn giản nhất để thử Vue.js là xem qua <a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="external">Hello World trên JSFiddle</a>. Bạn có thể mở link đó ở một tab mới và dùng nó như một trình soạn thảo cho các ví dụ đơn giản của chúng ta. Hoặc bạn cũng có thể tạo một file <code>html</code> và chèn Vue vào như sau:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Trang <a href="installation.html">cài đặt</a> sẽ cung cấp cho bạn nhiều tùy chọn hơn để cài đặt Vue. Lưu ý rằng chúng ta <strong>không khuyến khích</strong> những người mới (bắt đầu tìm hiểu Vue) sử dụng <code>vue-cli</code>, đặc biệt nếu bạn vẫn chưa rành về các công cụ build dựa trên Node.js</p>
+<h2 id="Rendering"><a href="#Rendering" class="headerlink" title="Rendering"></a>Rendering</h2><p>Cốt lõi của Vue.js là một hệ thống cho phép chúng ta render dữ liệu đến DOM bằng cú pháp template rõ ràng, đơn giản:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  &#123;&#123; message &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue!'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app" class="demo">
+  {{ message }}
+</div>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+</script>
+
+<p>Chúng ta vừa tạo xong một ứng dụng Vue đầu tiên! Nhìn nó có vẻ như chỉ đơn giản là render một string thôi, nhưng thực ra thì Vue đã làm khá nhiều việc ở bên dưới vẻ ngoài đơn giản đó. Dữ liệu và DOM được liên kết với nhau, bây giờ, mọi thứ đã <a href="https://en.wikipedia.org/wiki/Reactive_programming" target="_blank" rel="external">reactive</a>. Làm sao chúng ta biết được điều đó? Chỉ cần mở Javascript console của trình duyệt lên, sau đó thử thay đổi giá trị của <code>app.message</code> xem, bạn sẽ thấy nội dung được render bị thay đổi theo theo.</p>
+<p>Ngoài việc chèn text bằng cú pháp như trên, chúng ta còn có thể bind nó như ví dụ dưới đây: </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-bind:title</span>=<span class="string">"message"</span>&gt;</span></div><div class="line">    Hover your mouse over me for a few seconds to see my dynamically bound title!</div><div class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-2'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'You loaded this page on '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app-2" class="demo">
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds to see my dynamically bound title!
+  </span>
+</div>
+<script>
+var app2 = new Vue({
+  el: '#app-2',
+  data: {
+    message: 'You loaded this page on ' + new Date()
+  }
+})
+</script>
+
+<p>Đến đây, chúng ta vừa gặp một thứ rất mới mẻ. Thuộc tính <code>v-bind</code> mà bạn đang thấy được gọi là <strong>directive</strong>. Directive (chỉ thị, mình sẽ dùng từ directive vì nó như là một thuật ngữ) có một tiền tố là <code>v-</code> để biểu thị rằng đây là một thuộc tính được cung cấp bởi Vue, và như bạn có thể đoán được, các directive này cung cấp reactive behavior cho DOM. Trong ví dụ ở trên, <code>v-text</code> giống như khi nói rằng “Hãy luôn giữ cho thuộc tính title của element này luôn được cập nhật với giá trị của <code>message</code>“  </p>
+<p>Nếu bạn mở console lên một lần nữa và nhập vào <code>app2.message = &#39;some new message&#39;</code>, bạn sẽ thấy một lần nữa rằng thuộc tính title đã được cập nhật.</p>
+<h2 id="Re-nhanh-va-vong-lap"><a href="#Re-nhanh-va-vong-lap" class="headerlink" title="Rẽ nhánh và vòng lặp"></a>Rẽ nhánh và vòng lặp</h2><p>Rất đơn giản để ẩn/hiện một element:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-3"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"seen"</span>&gt;</span>Now you see me<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> app3 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-3'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">seen</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app-3" class="demo">
+  <span v-if="seen">Now you see me</span>
+</div>
+<script>
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+</script>
+
+<p>Mở console lên và nhập <code>app3.seen = false</code>, rồi ấy enter. Bạn sẽ thấy rằng dòng thông báo sẽ ẩn đi.</p>
+<p>Ví dụ này cho thấy rằng chúng ta không chỉ có thể bind dữ liệu vào text hoặc các attribute, mà còn có thể bind <strong>cấu trúc</strong> của DOM. Hơn thế nữa, Vue còn cung cấp một hệ thống transition mạnh mẽ để có thể áp dụng các <a href="transitions.html">hiệu ứng transition</a> một cách tự động khi các element được chèn vào, update hoặc bị remove với Vue.</p>
+<p>Còn có một số directive khác, mỗi directive có một chức năng riêng biệt. Ví dụ, <code>v-for</code> có thể được dùng để hiển thị một danh sách các item bằng cách sử dụng Array:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-4"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></div><div class="line">      &#123;&#123; todo.text &#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> app4 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-4'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">todos</span>: [</div><div class="line">      &#123; <span class="attr">text</span>: <span class="string">'Learn JavaScript'</span> &#125;,</div><div class="line">      &#123; <span class="attr">text</span>: <span class="string">'Learn Vue'</span> &#125;,</div><div class="line">      &#123; <span class="attr">text</span>: <span class="string">'Build something awesome'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app-4" class="demo">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+<script>
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue' },
+      { text: 'Build something awesome' }
+    ]
+  }
+})
+</script>
+
+<p>Mở console lên và nhập <code>app4.todos.push({ text: &#39;New item&#39; })</code>. Bạn sẽ thấy có một item mới được chèn vào list.</p>
+<h2 id="Xu-ly-input-cua-user"><a href="#Xu-ly-input-cua-user" class="headerlink" title="Xử lý input của user"></a>Xử lý input của user</h2><p>Để user tương tác với app của bạn, chúng ta sử dụng directive <code>v-on</code> để đính các event listener vào DOM, các listener này sẽ liên kết với các method trong đối tượng Vue của chúng ta. </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>Reverse Message<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> app5 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-5'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue.js!'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    <span class="attr">reverseMessage</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app-5" class="demo">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+<script>
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+</script>
+
+<p>Lưu ý rằng trong method chúng ta chỉ đơn giản là cập nhật state của app chứ không tác động lên DOM - Tất cả các thao tác trực tiếp với DOM được xử lý bởi Vue, và code mà bạn viết ra chỉ tập trung vào logic. </p>
+<p>Vue còn cung cấp directive <code>v-model</code>, cho phép tạo ra two-way binding giữa input và state của app một cách dễ dàng: </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-6"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> app6 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-6'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue!'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app-6" class="demo">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+<script>
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+</script>
+
+<h2 id="Sang-tac-voi-cac-Component"><a href="#Sang-tac-voi-cac-Component" class="headerlink" title="Sáng tác với các Component"></a>Sáng tác với các Component</h2><p>Hệ thống component là một khái niệm quan trọng trong Vue, bởi vì nó là một phép trừu tượng cho phép chúng ta xây dựng các dứng dụng lớn bằng cách kế hợp các component nhỏ , khép kính và khả năng sử dụng lại cao lại với nhau. Nếu nghĩ theo cách đó, thì hầu hết mọi loại giao diện đều có thể được trường tượng thành một cây của các components: </p>
+<p><img src="/images/components.png" alt="Component Tree"></p>
+<p>Trong Vue, một component cơ cơ bản chính là một instance ủa Vue với các option được định nghĩa sẵn trong nó. Việc đăng ký một component trong Vue rất đơn giản:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Define a new component called todo-item</span></div><div class="line">Vue.component(<span class="string">'todo-item'</span>, &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;li&gt;This is a todo&lt;/li&gt;'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Bây giờ, bạn có thể sử dụng nó trong template của một component khác:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- Create an instance of the todo-item component --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">todo-item</span>&gt;</span><span class="tag">&lt;/<span class="name">todo-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Nhưng component này chỉ render một đoạn text giống nhau, điều đó không có gì thú vị cả. Chúng ta cần phải làm sao đó để có thể truyền dữ liệu từ component cha đến các component con. Hãy sửa lại compoent con một chút để nó có thể chấp nhận các <a href="components.html#Props">prop</a>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'todo-item'</span>, &#123;</div><div class="line">  <span class="comment">// The todo-item component now accepts a</span></div><div class="line">  <span class="comment">// "prop", which is like a custom attribute.</span></div><div class="line">  <span class="comment">// This prop is called todo.</span></div><div class="line">  props: [<span class="string">'todo'</span>],</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;li&gt;&#123;&#123; todo.text &#125;&#125;&lt;/li&gt;'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Bây giờ, chúng ta có thể truyền nội dung todo vào từng compoent bằng cách sử dụng <code>v-bind</code>: </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-7"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- Now we provide each todo-item with the todo object    --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- it's representing, so that its content can be dynamic --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">todo-item</span> <span class="attr">v-for</span>=<span class="string">"item in groceryList"</span> <span class="attr">v-bind:todo</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">todo-item</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'todo-item'</span>, &#123;</div><div class="line">  <span class="attr">props</span>: [<span class="string">'todo'</span>],</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;li&gt;&#123;&#123; todo.text &#125;&#125;&lt;/li&gt;'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-7'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">groceryList</span>: [</div><div class="line">      &#123; <span class="attr">text</span>: <span class="string">'Vegetables'</span> &#125;,</div><div class="line">      &#123; <span class="attr">text</span>: <span class="string">'Cheese'</span> &#125;,</div><div class="line">      &#123; <span class="attr">text</span>: <span class="string">'Whatever else humans are supposed to eat'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="app-7" class="demo">
+  <ol>
+    <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+  </ol>
+</div>
+<script>
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
+})
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { text: 'Vegetables' },
+      { text: 'Cheese' },
+      { text: 'Whatever else humans are supposed to eat' }
+    ]
+  }
+})
+</script>
+
+<p>Đây chỉ là một ví dụ tượng trưng thôi, nhưng chúng ta đã có thể tách app ra thành nhiều đơn vị nhỏ, và các đơn vị nhỏ này có liên kết tới app của chúng thông qua props. Chúng ta có thể cải tiến component <code>&lt;todo-item&gt;</code> tốt hơn nữa bằng template và logic phức tạp hơn mà không làm ảnh hưởng tới component app.</p>
+<p>Trong một ứng dụng lớn, việc tách app ra thành nhiều component có ý nghĩa quan trọng trong việc phát triển ứng dụng đó. Chúng ta sẽ nói nhiều hơn về các component <a href="components.html">trong hướng dẫn sau</a>, còn dưới đây là một ví dụ về template của app khi mà nó được tách ra thành nhiều component:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-nav</span>&gt;</span><span class="tag">&lt;/<span class="name">app-nav</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-view</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">app-sidebar</span>&gt;</span><span class="tag">&lt;/<span class="name">app-sidebar</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">app-content</span>&gt;</span><span class="tag">&lt;/<span class="name">app-content</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">app-view</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Moi-quan-he-voi-Custom-Elements"><a href="#Moi-quan-he-voi-Custom-Elements" class="headerlink" title="Mối quan hệ với Custom Elements"></a>Mối quan hệ với Custom Elements</h3><p>Bạn có thể đã để ý thấy rằng các component của Vue rất giống với <strong>Custom Elements</strong> - một phần của <a href="http://www.w3.org/wiki/WebComponents/" target="_blank" rel="external">Web Components Spec</a>. Đó là bởi vì cú pháp của các component trong Vue đã dựa theo <a href="http://www.w3.org/wiki/WebComponents/" target="_blank" rel="external">Web Components Spec</a>. Ví dụ, Vue component có hiện thựct <a href="https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md" target="_blank" rel="external">Slot API</a> và <code>is</code> là một thuộc tính đặt biệt. Tuy nhiên, có một vài điểm khác biệt mấu chốt:</p>
+<ol>
+<li><p>Web Components Spec vẫn đang được phát thảo và vẫn chưa được hiện thực trong tất cả trình duyệt.  Để so sánh, Vue component không đòi hỏi bất cứ <a href="https://en.wikipedia.org/wiki/Polyfill" target="_blank" rel="external">polyfills</a> nào, và hoạt động một cách nhất quán trên tất cả các trình duyệt được hỗ trợ ( IE9 trở lên ). Khi cần thiết, các Vue component có thể được bao bởi một custom element</p>
+</li>
+<li><p>Các Vue component cung cấp nhiều tính năng quan trọng mà không có trong các custom element, đáng chú ý nhất là dữ liệu có thể được trao đổi giữa các component với nhau, custom event và các công cụ để build.</p>
+</li>
+</ol>
+<h2 id="San-sang-cho-nhieu-thu-thu-vi-hon-chua"><a href="#San-sang-cho-nhieu-thu-thu-vi-hon-chua" class="headerlink" title="Sẵn sàng cho nhiều thứ thú vị hơn chưa?"></a>Sẵn sàng cho nhiều thứ thú vị hơn chưa?</h2><p>Chúng ta chỉ mới làm quen với những tính năng cơ bản nhất của Vue.js - phần còn lại của hướng dẫn này cũng sẽ nói kỹ về nó và những tính năng chuyên sâu khác và chi tiết hơn, vậy hãy chắc rằng bạn sẽ đọc kỹ hết những nội dung ở trên!</p>
+
+    
+      <div class="guide-links">
+        
+          <span>← <a href="/v2/guide/installation.html">Cài đặt</a></span>
+        
+        
+          <span style="float:right"><a href="/v2/guide/instance.html">The Vue Instance</a> →</span>
+        
+      </div>
+    
+    <div class="footer">
+      Nếu bạn thấy lỗi sai hoặc muốn đóng góp, hãy giúp chúng tôi
+      <a href="https://github.com/vuejs-vn/vi.vuejs.org/blob/master/src/v2/guide/index.md" target="_blank">
+        sửa trang này Github!
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->        
+        <script src="/js/css.escape.js"></script>
+        <script src="/js/common.js"></script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: 'BH4D9OD16A',
+            apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+            indexName: 'vuejs',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
