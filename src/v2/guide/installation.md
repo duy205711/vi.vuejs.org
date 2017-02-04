@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Cài đặt
 type: guide
 order: 1
 vue_version: 2.1.10
@@ -9,35 +9,35 @@ gz_size: "25.86"
 ro_gz_size: "18.01"
 ---
 
-### Compatibility Note
+### Tương thích trình duyệt
 
-Vue does **not** support IE8 and below, because it uses ECMAScript 5 features that are un-shimmable in IE8. However it supports all [ECMAScript 5 compliant browsers](http://caniuse.com/#feat=es5).
+Vue **không** hỗ trợ trình duyệt IE từ phiên bản 8 trở xuống, vì nó sử dụng những tính năng của ECMAScript5 mà trong IE8 không có. Tuy nhiên Vue sẽ hỗ trợ tất cả các [trình duyệt tương thích với ECMAScript 5](http://caniuse.com/#feat=es5).
 
-### Release Notes
+### Những ghi chú về việc phát hành
 
-Detailed release notes for each version are available on [GitHub](https://github.com/vuejs/vue/releases).
+Những thông tin chi tiết về việc phát hành cho từng phiên bản được ghi chú đầy đủ trên  [GitHub](https://github.com/vuejs/vue/releases).
 
 ## Standalone
 
-Simply download and include with a script tag. `Vue` will be registered as a global variable.
+Chỉ cần tải về và chèn vào trong thẻ script. `Vue` sẽ được đăng kí nhưng một biến global.
 
-<p class="tip">Don't use the minified version during development. You will miss out all the nice warnings for common mistakes!</p>
+<p class="tip">Không sử dụng phiên bản minified trong quá trình phát triển. Vì bạn sẽ bỏ lỡ tất cả cảnh báo của Vue khi xảy ra những lỗi thường gặp.</p>
 
 <div id="downloads">
-<a class="button" href="/js/vue.js" download>Development Version</a><span class="light info">With full warnings and debug mode</span>
+<a class="button" href="/js/vue.js" download>Dành cho Development</a><span class="light info">Bao gồm đầy đủ cảnh báo và debug mode</span>
 
-<a class="button" href="/js/vue.min.js" download>Production Version</a><span class="light info">Warnings stripped, {{gz_size}}kb min+gzip</span>
+<a class="button" href="/js/vue.min.js" download>Dành cho Production</a><span class="light info">Cảnh báo đã được loại bỏ, {{gz_size}}kb min+gzip</span>
 </div>
 
 ### CDN
 
-Recommended: [unpkg](https://unpkg.com/vue/dist/vue.js), which will reflect the latest version as soon as it is published to npm. You can also browse the source of the npm package at [unpkg.com/vue/](https://unpkg.com/vue/).
+Khuyến khích cài đặt theo cách này: [unpkg](https://unpkg.com/vue/dist/vue.js) (chỉ cần copy đường dẫn), đây sẽ luôn là phiên bản mới nhất trùng khớp với phiên bản được phát hành trên npm. Bạn cũng có thể duyệt xem package của Vue trên npm tại [unpkg.com/vue/](https://unpkg.com/vue/).
 
-Also available on [jsDelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.js) or [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js), but these two services take some time to sync so the latest release may not be available yet.
+Ngoài ra bạn cũng có thể sử dụng [jsDelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.js) hoặc [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js), nhưng hai dịch vụ này phải mất một ít thời gian để đồng bộ vì vậy phiên bản mới nhất có thể sẽ chưa được cập nhật kịp thời.
 
 ## NPM
 
-NPM is the recommended installation method when building large scale applications with Vue. It pairs nicely with module bundlers such as [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/). Vue also provides accompanying tools for authoring [Single File Components](single-file-components.html).
+NPM là một phương pháp cài đặt được khuyến khích sử dụng khi xây dựng những ứng dụng lớn với Vue. Nó kết hợp một cách tuyệt vời với các module bundlers như [Webpack](https://webpack.js.org/) hoặc [Browserify](http://browserify.org/). Vue cũng cung cấp accompanying tools for authoring [Single File Components](single-file-components.html).
 
 ``` bash
 # latest stable
@@ -46,15 +46,15 @@ $ npm install vue
 
 ### Standalone vs. Runtime-only Build
 
-There are two builds available, the standalone build and the runtime-only build. The difference being that the former includes the **template compiler** and the latter does not.
+Hiện tại có hai loại build là standalone build và runtime-only build. Sự khác biệt giữa hai loại nằm ở việc standalone build thì bao gồm **trình biên dịch template** còn runtime-only build thì không.
 
-The template compiler is responsible for compiling Vue template strings into pure JavaScript render functions. If you want to use the `template` option, then you need the compiler.
+Trình biên dịch templates có trách nhiệm biên dịch Vue template strings thành các hàm render thuần Javascript. Nếu bạn muốn sử dụng `template` option, thì bạn cần có trình biên dịch.
 
-- The standalone build includes the compiler and supports the `template` option. **It also relies on the presence of browser APIs so you cannot use it for server-side rendering.**
+- Standalone build bao gồm trình biên dịch và hỗ trợ `template` option. **Nó cũng phụ thuộc vào các API của trình duyệt, vì vậy bạn không thể sử dụng standalone build cho server-side rendering.**
 
-- The runtime-only build does not include the template compiler, and does not support the `template` option. You can only use the `render` option when using the runtime-only build, but it works with single-file components, because single-file components' templates are pre-compiled into `render` functions during the build step. The runtime-only build is roughly 30% lighter-weight than the standalone build, weighing only {{ro_gz_size}}kb min+gzip.
+- Runtime-only build không bao gồm trình biên dịch và không hỗ trợ `template` option. Bạn chỉ có thể sử dụng `render` option khi sử dụng runtime-only build, tuy nhiên nó có thể hoạt động vói các single-file component, nguyên nhân là do các template của single-file component được biên dịch trước (pre-compiled) vào trong các hàm `render` trong quá trình build, dung lượng chỉ có {{ro_gz_size}}kb min+gzip.
 
-By default, the NPM package exports the **runtime-only** build. To use the standalone build, add the following alias to your Webpack config:
+Mặc định, NPM package sẽ xuất ra dưới dạng **runtime-only** build. Để sử dụng standalone build, bạn cần thêm alias dưới đây vào trong phần cấu hình của Webpack:
 
 ``` js
 resolve: {
@@ -64,7 +64,7 @@ resolve: {
 }
 ```
 
-For Browserify, you can add an alias to your package.json:
+Đối với Browserify, bạn cần thêm một alias vào trong package.json:
 
 ``` js
 "browser": {
@@ -72,17 +72,17 @@ For Browserify, you can add an alias to your package.json:
 },
 ```
 
-<p class="tip">Do NOT do `import Vue from 'vue/dist/vue.js'` - since some tools or 3rd party libraries may import vue as well, this may cause the app to load both the runtime and standalone builds at the same time and lead to errors.</p>
+<p class="tip">KHÔNG được `import Vue from 'vue/dist/vue.js'` - bởi vì một vài thư viện bên thứ 3 có thể đã import Vue rồi, nếu bạn import như vậy có thể khiến cho app phải tải cả hai dạng là runtime và standalone build cùng lúc và điều này sẽ dấn đến lỗi.</p>
 
-### CSP environments
+### Môi trường CSP
 
-Some environments, such as Google Chrome Apps, enforce Content Security Policy (CSP), which prohibits the use of `new Function()` for evaluating expressions. The standalone build depends on this feature to compile templates, so is unusable in these environments.
+Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng `new Function()` for evaluating expressions. Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.
 
-On the other hand, the runtime-only build is fully CSP-compliant. When using the runtime-only build with [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) or [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), your templates will be precompiled into `render` functions which work perfectly in CSP environments.
+Mặt khác, runtime-only build thì hoàn toàn phù hợp cho môi trường CSP. Khi sử dụng runtime-only build với [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) hoặc [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), những template của bạn sẽ được biên dịch vào trong các hàm `render`, những hàm đó hoạt động hoàn hảo trong các môi trường CSP.
 
 ## CLI
 
-Vue.js provides an [official CLI](https://github.com/vuejs/vue-cli) for quickly scaffolding ambitious Single Page Applications. It provides batteries-included build setups for a modern frontend workflow. It takes only a few minutes to get up and running with hot-reload, lint-on-save, and production-ready builds:
+Vue.js cung cấp một [CLI - bản chính thức](https://github.com/vuejs/vue-cli) giúp cho việc khởi tạo những Single Page Applications được nhanh chóng hơn. It provides batteries-included build setups for a modern frontend workflow. Chỉ tốn một vài phút để để khởi tạo và chạy với hot-reload, lint-on-save, and production-ready builds:
 
 ``` bash
 # install vue-cli
@@ -95,11 +95,11 @@ $ npm install
 $ npm run dev
 ```
 
-<p class="tip">The CLI assumes prior knowledge of Node.js and the associated build tools. If you are new to Vue or front-end build tools, we strongly suggest going through <a href="./">the guide</a> without any build tools before using the CLI.</p>
+<p class="tip">Việc sử dụng CLI đòi hỏi bạn cần có kiến thức về Node.js và những công cụ build liên quan. Nếu bạn mới làm quen với Vue hoặc những công cụ build dành cho front-end thì chúng tôi đề nghị bạn xem qua <a href="./">hướng dẫn</a> không sử dụng bất kì công cụ build nào trước khi sử dụng CLI.</p>
 
 ## Dev Build
 
-**Important**: the built files in GitHub's `/dist` folder are only checked-in during releases. To use Vue from the latest source code on GitHub, you will have to build it yourself!
+**Quan trọng**: những files được build ra trong thư mục `/dist` trên Github chỉ được cập nhật mỗi lần phát hành phiên bản mới. Vì vậy nếu muốn sử dụng Vue từ những files này bạn cần phải tự build!
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
@@ -117,4 +117,4 @@ $ bower install vue
 
 ## AMD Module Loaders
 
-The standalone downloads or versions installed via Bower are wrapped with UMD so they can be used directly as an AMD module.
+Những bản tải về standalone hoặc được cài đặt từ Bower thì đã được wrapped với UMD vì vậy chúng có thể được sử dụng trược tiếp như một AMD module.
