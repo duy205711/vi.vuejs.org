@@ -58,11 +58,13 @@
         <% } else { %>
             <%- body %>
         <% } %>
-
+        <!-- tooltip lib -->
+        <script src="/js/vue.js"></script>
         <!-- main custom script for sidebars, version selects etc. -->        
         <script src="/js/css.escape.js"></script>
+        <script src="https://unpkg.com/popper.js"></script>
+        <script src="https://unpkg.com/tooltip.js"></script>
         <script src="/js/common.js"></script>
-
         <!-- search -->
         <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
         <%- css('css/search') %>
