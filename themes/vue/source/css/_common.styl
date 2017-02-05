@@ -204,3 +204,26 @@ a.button
         border-left 4px solid transparent
         border-right 4px solid transparent
         border-top 5px solid #ccc
+[data-tooltip]
+    border-bottom 1px dashed #b6b6b6
+    cursor help
+    position relative
+    &:after
+        content attr(data-tooltip)
+        padding 5px 10px
+        position: absolute;
+        left 0
+        bottom 100%
+        max-width 400px
+        width 100vw
+        z-index 20px
+        background-color rgba(0, 0, 0, 0.87)
+        color #fff
+        opacity 0
+        transition opacity .3s
+        border-radius 4px
+        display none
+    &:hover
+         &:after
+             display block
+             opacity 1
