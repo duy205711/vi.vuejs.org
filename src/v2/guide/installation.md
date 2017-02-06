@@ -19,14 +19,14 @@ Những thông tin chi tiết về việc phát hành cho từng phiên bản đ
 
 ## Standalone
 
-Chỉ cần tải về và chèn vào trong thẻ script. `Vue` sẽ được đăng kí nhưng một biến global.
+Chỉ cần tải về và chèn vào trong thẻ script. `Vue` sẽ được đăng kí như một biến global.
 
 <p class="tip">Không sử dụng phiên bản minified trong quá trình phát triển. Vì bạn sẽ bỏ lỡ tất cả cảnh báo của Vue khi xảy ra những lỗi thường gặp.</p>
 
 <div id="downloads">
-<a class="button" href="/js/vue.js" download>Dành cho Development</a><span class="light info">Bao gồm đầy đủ cảnh báo và debug mode</span>
+<a class="button" href="/js/vue.js" download>Phiên bản Development</a><span class="light info">Bao gồm đầy đủ cảnh báo và debug mode</span>
 
-<a class="button" href="/js/vue.min.js" download>Dành cho Production</a><span class="light info">Cảnh báo đã được loại bỏ, {{gz_size}}kb min+gzip</span>
+<a class="button" href="/js/vue.min.js" download>Phiên bản Production</a><span class="light info">Cảnh báo đã được loại bỏ, {{gz_size}}kb min+gzip</span>
 </div>
 
 ### CDN
@@ -37,14 +37,14 @@ Ngoài ra bạn cũng có thể sử dụng [jsDelivr](//cdn.jsdelivr.net/vue/{{
 
 ## NPM
 
-NPM là một phương pháp cài đặt được khuyến khích sử dụng khi xây dựng những ứng dụng lớn với Vue. Nó kết hợp một cách tuyệt vời với các module bundlers như [Webpack](https://webpack.js.org/) hoặc [Browserify](http://browserify.org/). Vue cũng cung cấp accompanying tools for authoring [Single File Components](single-file-components.html).
+NPM là một phương pháp cài đặt được khuyến khích sử dụng khi xây dựng những ứng dụng lớn với Vue. Nó kết hợp một cách tuyệt vời với các module bundlers như [Webpack](https://webpack.js.org/) hoặc [Browserify](http://browserify.org/). Vue cũng cung cấp các công cụ kèm theo để tạo ra [Single File Components](single-file-components.html).
 
 ``` bash
 # latest stable
 $ npm install vue
 ```
 
-### Standalone vs. Runtime-only Build
+### Standalone Build và Runtime-only Build
 
 Hiện tại có hai loại build là standalone build và runtime-only build. Sự khác biệt giữa hai loại nằm ở việc standalone build thì bao gồm **trình biên dịch template** còn runtime-only build thì không.
 
@@ -76,7 +76,7 @@ resolve: {
 
 ### Môi trường CSP
 
-Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng `new Function()` for evaluating expressions. Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.
+Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng `new Function()` để <span data-tooltip="evaluating expressions">đánh giá các biểu thức</span>  . Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.
 
 Mặt khác, runtime-only build thì hoàn toàn phù hợp cho môi trường CSP. Khi sử dụng runtime-only build với [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) hoặc [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), những template của bạn sẽ được biên dịch vào trong các hàm `render`, những hàm đó hoạt động hoàn hảo trong các môi trường CSP.
 
@@ -99,7 +99,7 @@ $ npm run dev
 
 ## Dev Build
 
-**Quan trọng**: những files được build ra trong thư mục `/dist` trên Github chỉ được cập nhật mỗi lần phát hành phiên bản mới. Vì vậy nếu muốn sử dụng Vue từ những files này bạn cần phải tự build!
+**Quan trọng**: những files được build ra trong thư mục `/dist` trên Github chỉ được cập nhật mỗi lần phát hành phiên bản mới. Vì vậy nếu muốn sử dụng Vue từ những files đó bạn cần phải tự build!
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
@@ -117,4 +117,4 @@ $ bower install vue
 
 ## AMD Module Loaders
 
-Những bản tải về standalone hoặc được cài đặt từ Bower thì đã được wrapped với UMD vì vậy chúng có thể được sử dụng trược tiếp như một AMD module.
+Những bản tải về standalone hoặc được cài đặt từ Bower thì đã được bao bọc với <span data-tooltip="Universal Module Definition">UMD</span> vì vậy chúng có thể được sử dụng trược tiếp như một <span data-tooltip="Asynchronous Module Definition">AMD</span> module.
