@@ -4,11 +4,11 @@ type: guide
 order: 4
 ---
 
-Vuejs sử dụng cú pháp template dựa trên HTML vì vậy nó cho phép bạn bind DOM( đã được render ) với dữ liệu trong một đối tượng Vue. Tất cả template của Vue.js đều hợp lệ với HTML, nó có thể được phân tích bằng các trình duyệt và các công cụ phân tích cú pháp HTML - với điều kiện nó sử tuân thủ spec của HTML.
+Vuejs sử dụng cú pháp template dựa trên HTML vì vậy nó cho phép bạn bind DOM(đã được render) với dữ liệu trong một đối tượng Vue. Tất cả template của Vue.js đều hợp lệ với HTML, nó có thể được phân tích bằng các trình duyệt và các công cụ phân tích cú pháp HTML - với điều kiện nó sử tuân thủ spec của HTML.
 
-<span data-tooltip="Under the hood">Về mặt hiện thực của mình</span>, Vue biên dịch template thành các hàm render của Virtual DOM. Kết hợp với <span  data-tooltip="reactivity system">hệ thống reactive</span>, Vue có khả năng tính ra số lượng nhỏ nhất các component cần được render lại và áp dụng một số lượng nhỏ thay đổi rất nhỏ trên DOM khi state của app thay đổi.
+<span data-tooltip="Under the hood">Về mặt hiện thực của mình</span>, Vue biên dịch template thành các hàm render của Virtual DOM. Kết hợp với một hệ thống có tính chất reactive (reactivity system), Vue có khả năng tính ra số lượng nhỏ nhất các component cần được render lại và áp dụng một số lượng nhỏ thay đổi rất nhỏ trên DOM khi state của app thay đổi.
 
-Nếu như bạn đã quen thuộc với khái niệm Virtual DOM và thích sức mạnh <span  data-tooltip="the raw power of JavaScript">nguyên thủy</span> của JavaScript, thì bạn có thể [viết trực tiếp các hàm render](render-function.html) thay vì dùng template, nó hỗ trợ cả JSX.
+Nếu như bạn đã quen thuộc với khái niệm Virtual DOM và thích sức mạnh nguyên thủy của JavaScript(the raw power of JavaScript), thì bạn có thể [viết trực tiếp các hàm render](render-function.html) thay vì dùng template, nó có hỗ trợ cả JSX.
 
 ## Interpolations
 
@@ -24,7 +24,7 @@ Dạng cơ bản nhất để bind data là text interpolation sử dụng cú p
 
 Mustache tag sẽ bị thay thế bằng giá trị của thuộc tính `msg` trong <span  data-tooltip="Đối tượng chứa thuộc tính msg.">đối tượng data</span> tương ứng. Nó cũng sẽ được update mỗi khi giá trị của `msg` thay đổi.
 
-Bạn có thể thực hiện interpolation một lần duy nhất và không update khi data thay đổi bằng cách sử dụng [v-once directive](../api/#v-once), nhưng hãy nhớ rằng nó cũng sẽ tác động tới tất các các binding khác trong cùng node đó.
+Bạn có thể thực hiện interpolation một lần duy nhất và không update khi data thay đổi bằng cách sử dụng [v-once directive](../api/#v-once), nhưng hãy nhớ rằng nó cũng sẽ tác động tới tất các binding khác trong cùng node đó.
 
 ``` html
 <span v-once>This will never change: {{ msg }}</span>
@@ -32,7 +32,7 @@ Bạn có thể thực hiện interpolation một lần duy nhất và không up
 
 ### Raw HTML
 
-Cú pháp Mustache sẽ thông dịch dữ liệu thành <span  data-tooltip="Tất cả mọi thứ đều show ra thành text đọc được, code html cũng sẽ show ra thành text đọc được.">plain text</span>, không phải html. Để có thể xuất ra code HTML, bạn cần phải sử dụng directive `v-html`: 
+Cú pháp Mustache sẽ thông dịch dữ liệu thành <span  data-tooltip="Tất cả mọi thứ đều hiển thị ra thành text có thể đọc được, kể cả code HTML">plain text</span>, không phải html. Để có thể xuất ra code HTML, bạn cần phải sử dụng directive `v-html`: 
 
 ``` html
 <div v-html="rawHtml"></div>
@@ -44,13 +44,13 @@ Những nội dung trong rawHtml sẽ được chèn vào DOM dạng HTML - các
 
 ### Các thuộc tính
 
-Cú pháp mustaches không thể được sử dụng bên trong các thuộc tính HML, thay vào hãy sử dụng [v-bind directive](../api/#v-bind):
+Cú pháp mustaches không thể được sử dụng bên trong các thuộc tính HTML, thay vào hãy sử dụng [v-bind directive](../api/#v-bind):
 
 ``` html
 <div v-bind:id="dynamicId"></div>
 ```
 
-Nó còn hoạt động với các thuộc tính kiểu boolean - các thuộc tính sẽ bị remove nếu giá trị của nó có thể hiểu là <span  data-tooltip="Các giá trị được quy định là sai, ví dụ như: null, false, 0,...">false</span>:
+Nó còn hoạt động với các thuộc tính kiểu boolean - các thuộc tính sẽ bị remove nếu giá trị của nó có thể hiểu là <span  data-tooltip="Các giá trị được quy định là sai, ví dụ như: null, false, 0, ...">false</span>:
 
 ``` html
 <button v-bind:disabled="someDynamicCondition">Button</button>
@@ -58,7 +58,7 @@ Nó còn hoạt động với các thuộc tính kiểu boolean - các thuộc t
 
 ### Sử dụng các biểu thức Javascript
 
-Cho đến bây giờ, chúng ta chỉ mới bind những thuộc tính đơn giản trong các template của chúng ta. Như thực ra Vue.js hỗ trợ đầy đủ sức mạnh của các cú pháp JavaScript trong tất cả các <span data-tool-tip="Các kiểu binding dữ liệu">data binding</span>.
+Cho đến bây giờ, chúng ta chỉ mới bind những thuộc tính đơn giản trong các template của chúng ta. Nhưng thực ra Vue.js hỗ trợ đầy đủ sức mạnh của các cú pháp JavaScript trong tất cả các <span data-tool-tip="Các kiểu binding dữ liệu">data binding</span>.
 
 ``` html
 {{ number + 1 }}
@@ -70,7 +70,7 @@ Cho đến bây giờ, chúng ta chỉ mới bind những thuộc tính đơn gi
 <div v-bind:id="'list-' + id"></div>
 ```
 
-Các biểu thức này sẽ được sử lý như JavaScript trong <span  data-tooltip="data scope">phạm vi dữ liệu</span> của Vue instance mà nó thuộc về. Có một hạn chế là với mỗi binding chỉ có thể chứa **một biểu thức đơn**, ví dụ dưới đây sẽ **KHÔNG** chạy:
+Các biểu thức này sẽ được xử lý như JavaScript trong phạm vi dữ liệu(data scope) của Vue instance mà nó thuộc về. Có một hạn chế là với mỗi binding chỉ có thể chứa **một biểu thức đơn**, Nên ví dụ dưới đây sẽ **KHÔNG** chạy:
 
 ``` html
 <!-- this is a statement, not an expression: -->
@@ -80,7 +80,7 @@ Các biểu thức này sẽ được sử lý như JavaScript trong <span  data
 {{ if (ok) { return message } }}
 ```
 
-<p class="tip">Các biểu thức bị đặt trong sandbox vàn chỉ có thể truy xuất các biến global trong whitelist như `Math` và `Date`. Bạn không nên cố truy xuất vào các biến global được <span  data-tooltip="user defined">user định nghĩa</span> khi đang ở trong các biểu thứ này.</p>
+<p class="tip">Các biểu thức bị đặt trong sandbox vàn chỉ có thể truy xuất các biến global trong whitelist như `Math` và `Date`. Bạn không nên cố truy xuất vào các biến global được user định nghĩa(user defined) khi đang ở trong các biểu thứ này.</p>
 
 ## Directives
 
@@ -90,7 +90,7 @@ Directive là các thuộc tính đặt biệt với tiền tố `v-`. Giá tr�
 <p v-if="seen">Now you see me</p>
 ```
 
-Ở dây, directive `v-if` sẽ xóa/chèn element `<p>` dựa trên giá trị đúng/sai của biểu thứ `seen`.
+Ở dây, directive `v-if` sẽ xóa/chèn element `<p>` dựa trên giá trị đúng/sai của biểu thức `seen`.
 
 ### Các tham số
 
@@ -100,7 +100,7 @@ Một số directive có thể chấp nhận một "tham số", ký hiệu bằn
 <a v-bind:href="url"></a>
 ```
 
-Ở đây `href` chính là tham số, nó nói directive `v-bind` hãy bind thuộc tính `href` với giá trị của biểu thứ `url`.
+Ở đây `href` chính là tham số, nó nói directive `v-bind` hãy bind thuộc tính `href` với giá trị của biểu thức `url`.
 
 Một ví dụ khác là directive `v-on`, directive lắng nghe event của DOM:
 
@@ -164,7 +164,7 @@ Filter là các hàm JavaScript, do đó chúng có thể nhận các tham số:
 
 ## Cú pháp rút gọn
 
-Tiền tố `v-` phục vụ như là một gợi ý trực quan cho việc xác định các thuộc tính nào là riêng biệt của Vue.js trong các template của bạn. Nó hữu ích khi bạn sử dụng Vue.js để áp dụng một <span  data-tooltip="Từ gốc: dynamic behavior. Có thể hiểu là khi bạn muốn dùng Vue.js để đưa một hiệu ứng, hành có nhiều thay đổi ở DOM vào một đoạn code có sẵn.">hành vi động</span> lên một vài <span  data-tooltip="Có thể trong markup đó có chứa một vài thuộc tính tùy biến khác của thư viện JavaScript khác hoặc là bạn tự code trong JavaScript, khi đó nó có thể làm bạn cảm thấy dễ nhầm lẫn giữa thuộc tính của bạn và thuộc tính của Vue.js, thậm chí là xung đột với nhau.">markup có sẵn</span>, như có thể tạo cảm giác hơi dài dòng đối với một số directive thường dùng. Cùng với đó, sự cần thiết của tiền đó `v-` trở nên kém quan trọng khi bạn xây dựng một [SPA](https://en.wikipedia.org/wiki/Single-page_application) nơi mà Vue.js quản lý tất cả template. Vì thế, Vue.js cung cấp các cách rút gọn đặt biệt cho hai directive thường dùng là `v-bind` và `v-on`:
+Tiền tố `v-` phục vụ như là một gợi ý trực quan cho việc xác định các thuộc tính nào là riêng biệt của Vue.js trong các template của bạn. Nó hữu ích khi bạn sử dụng Vue.js để áp dụng một <span  data-tooltip="Từ gốc: dynamic behavior. Có thể hiểu là khi bạn muốn dùng Vue.js để đưa một hiệu ứng, hay tạo ra nhiều thay đổi ở DOM vào một đoạn code có sẵn.">hành vi động</span> lên một vài <span  data-tooltip="Có thể trong markup đó có chứa một vài thuộc tính tùy biến khác của thư viện JavaScript khác hoặc là bạn tự code trong JavaScript, khi đó nó có thể làm bạn cảm thấy dễ nhầm lẫn giữa thuộc tính của bạn và thuộc tính của Vue.js, thậm chí là xung đột với nhau.">markup có sẵn</span>, như có thể tạo cảm giác hơi dài dòng đối với một số directive thường dùng. Cùng với đó, sự cần thiết của tiền đó `v-` trở nên kém quan trọng khi bạn xây dựng một [SPA](https://en.wikipedia.org/wiki/Single-page_application) nơi mà Vue.js quản lý tất cả template. Vì thế, Vue.js cung cấp các cách rút gọn đặt biệt cho hai directive thường dùng là `v-bind` và `v-on`:
 
 ### Rút gọn của `v-bind`
 
