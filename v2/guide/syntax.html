@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Template Syntax — Vue.js</title>
+        <title>Cú pháp template — Vue.js</title>
         <meta charset="utf-8">
         <meta name="description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <meta property="og:type" content="article">
-        <meta property="og:title" content="Template Syntax — Vue.js">
+        <meta property="og:title" content="Cú pháp template — Vue.js">
         <meta property="og:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
         <meta property="og:image" content="https://vuejs.senviet.org/images/logo.png">
 
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="Template Syntax — Vue.js">
+        <meta name="twitter:title" content="Cú pháp template — Vue.js">
         <meta name="twitter:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
         <meta name="twitter:image" content="https://vuejs.senviet.org/images/logo.png">
 
@@ -217,7 +217,7 @@
                 
                 
                 <li>
-                    <a href="/v2/guide/instance.html" class="sidebar-link">The Vue Instance</a>
+                    <a href="/v2/guide/instance.html" class="sidebar-link">Vue Instance</a>
                 </li>
             
                 
@@ -229,7 +229,7 @@
                 
                 
                 <li>
-                    <a href="/v2/guide/syntax.html" class="sidebar-link current">Template Syntax</a>
+                    <a href="/v2/guide/syntax.html" class="sidebar-link current">Cú pháp template</a>
                 </li>
             
                 
@@ -569,63 +569,65 @@
 
     
     
-      <h1>Template Syntax</h1>
+      <h1>Cú pháp template</h1>
     
-    <p>Vue.js uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying Vue instance’s data. All Vue.js templates are valid HTML that can be parsed by spec-compliant browsers and HTML parsers.</p>
-<p>Under the hood, Vue compiles the templates into Virtual DOM render functions. Combined with the reactivity system, Vue is able to intelligently figure out the minimal amount of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.</p>
-<p>If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also <a href="render-function.html">directly write render functions</a> instead of templates, with optional JSX support.</p>
-<h2 id="Interpolations"><a href="#Interpolations" class="headerlink" title="Interpolations"></a>Interpolations</h2><h3 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h3><p>The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):</p>
+    <p>Vuejs sử dụng cú pháp template dựa trên HTML vì vậy nó cho phép bạn bind DOM(đã được render) với dữ liệu trong một đối tượng Vue. Tất cả template của Vue.js đều hợp lệ với HTML, nó có thể được phân tích bằng các trình duyệt và các công cụ phân tích cú pháp HTML - với điều kiện nó sử tuân thủ spec của HTML.</p>
+<p><span data-tooltip="Under the hood">Về mặt hiện thực của mình</span>, Vue biên dịch template thành các hàm render của Virtual DOM. Kết hợp với một hệ thống có tính chất reactive (reactivity system), Vue có khả năng tính ra số lượng nhỏ nhất các component cần được render lại và áp dụng một số lượng nhỏ thay đổi rất nhỏ trên DOM khi state của app thay đổi.</p>
+<p>Nếu như bạn đã quen thuộc với khái niệm Virtual DOM và thích sức mạnh nguyên thủy của JavaScript(the raw power of JavaScript), thì bạn có thể <a href="render-function.html">viết trực tiếp các hàm render</a> thay vì dùng template, nó có hỗ trợ cả JSX.</p>
+<h2 id="Interpolations"><a href="#Interpolations" class="headerlink" title="Interpolations"></a>Interpolations</h2><p class="tip">Chữ <a href="http://www.dictionary.com/browse/interpolation" target="_blank" rel="external">Interpolations</a> có nghĩa gốc là phép nội suy, nhưng chúng tôi cảm thấy khá khó để diễn đạt nó. Nên đã quyết định sử dụng từ tiếng Anh như là một thuật ngữ. Tạm thời các bạn có thể hiểu thuật ngữ này có nghĩa là một quá trình để Vue.js xác định giá trị của biến và đưa vào trong DOM.</p>
+
+<h3 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h3><p>Dạng cơ bản nhất để bind data là text interpolation sử dụng cú pháp “Mustache” (Cặp hai dấu ngặc nhọn).</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Message: &#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>The mustache tag will be replaced with the value of the <code>msg</code> property on the corresponding data object. It will also be updated whenever the data object’s <code>msg</code> property changes.</p>
-<p>You can also perform one-time interpolations that do not update on data change by using the <a href="../api/#v-once">v-once directive</a>, but keep in mind this will also affect any binding on the same node:</p>
+<p>Mustache tag sẽ bị thay thế bằng giá trị của thuộc tính <code>msg</code> trong <span data-tooltip="Đối tượng chứa thuộc tính msg.">đối tượng data</span> tương ứng. Nó cũng sẽ được update mỗi khi giá trị của <code>msg</code> thay đổi.</p>
+<p>Bạn có thể thực hiện interpolation một lần duy nhất và không update khi data thay đổi bằng cách sử dụng <a href="../api/#v-once">v-once directive</a>, nhưng hãy nhớ rằng nó cũng sẽ tác động tới tất các binding khác trong cùng node đó.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-once</span>&gt;</span>This will never change: &#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Raw-HTML"><a href="#Raw-HTML" class="headerlink" title="Raw HTML"></a>Raw HTML</h3><p>The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the <code>v-html</code> directive:</p>
+<h3 id="Raw-HTML"><a href="#Raw-HTML" class="headerlink" title="Raw HTML"></a>Raw HTML</h3><p>Cú pháp Mustache sẽ thông dịch dữ liệu thành <span data-tooltip="Tất cả mọi thứ đều hiển thị ra thành text có thể đọc được, kể cả code HTML">plain text</span>, không phải html. Để có thể xuất ra code HTML, bạn cần phải sử dụng directive <code>v-html</code>: </p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-html</span>=<span class="string">"rawHtml"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>The contents are inserted as plain HTML - data bindings are ignored. Note that you cannot use <code>v-html</code> to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.</p>
-<p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="external">XSS vulnerabilities</a>. Only use HTML interpolation on trusted content and <strong>never</strong> on user-provided content.</p>
+<p>Những nội dung trong rawHtml sẽ được chèn vào DOM dạng HTML - các data binding sẽ bị bỏ qua. Lưu ý rằng bạn không thể đặt một template khác trong <code>v-html</code> nhằm mục đích render một component ra. Bởi vì Vue không phải là một template engine dựa trên string đơn thuần. Thay vào đó, các component được hiểu là một đơn vị cơ bản của UI để sử dụng lại và kết hợp với nhau.</p>
+<p class="tip">Lạm dụng việc render HTML (HTML interpolation) trên website của bạn có thể rất nguy hiểm, bởi vì nó rất dễ dẫn tới <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="external">các lỗ hổng XSS</a>. Chỉ sử dụng HTML interpolation cho các nội dung đáng tin và <strong>không bao giờ</strong> render HTML với các nội dung được cung cấp bởi người dùng.</p>
 
-<h3 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h3><p>Mustaches cannot be used inside HTML attributes, instead use a <a href="../api/#v-bind">v-bind directive</a>:</p>
+<h3 id="Cac-thuoc-tinh"><a href="#Cac-thuoc-tinh" class="headerlink" title="Các thuộc tính"></a>Các thuộc tính</h3><p>Cú pháp mustaches không thể được sử dụng bên trong các thuộc tính HTML, thay vào hãy sử dụng <a href="../api/#v-bind">v-bind directive</a>:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"dynamicId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>It also works for boolean attributes - the attribute will be removed if the condition evaluates to a falsy value:</p>
+<p>Nó còn hoạt động với các thuộc tính kiểu boolean - các thuộc tính sẽ bị remove nếu giá trị của nó có thể hiểu là <span data-tooltip="Các giá trị được quy định là sai, ví dụ như: null, false, 0, ...">false</span>:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-bind:disabled</span>=<span class="string">"someDynamicCondition"</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Using-JavaScript-Expressions"><a href="#Using-JavaScript-Expressions" class="headerlink" title="Using JavaScript Expressions"></a>Using JavaScript Expressions</h3><p>So far we’ve only been binding to simple property keys in our templates. But Vue.js actually supports the full power of JavaScript expressions inside all data bindings:</p>
+<h3 id="Su-dung-cac-bieu-thuc-Javascript"><a href="#Su-dung-cac-bieu-thuc-Javascript" class="headerlink" title="Sử dụng các biểu thức Javascript"></a>Sử dụng các biểu thức Javascript</h3><p>Cho đến bây giờ, chúng ta chỉ mới bind những thuộc tính đơn giản trong các template của chúng ta. Nhưng thực ra Vue.js hỗ trợ đầy đủ sức mạnh của các cú pháp JavaScript trong tất cả các <span data-tool-tip="Các kiểu binding dữ liệu">data binding</span>.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line">&#123;&#123; number + 1 &#125;&#125;</div><div class="line"></div><div class="line">&#123;&#123; ok ? 'YES' : 'NO' &#125;&#125;</div><div class="line"></div><div class="line">&#123;&#123; message.split('').reverse().join('') &#125;&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"'list-' + id"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>These expressions will be evaluated as JavaScript in the data scope of the owner Vue instance. One restriction is that each binding can only contain <strong>one single expression</strong>, so the following will <strong>NOT</strong> work:</p>
+<p>Các biểu thức này sẽ được xử lý như JavaScript trong phạm vi dữ liệu(data scope) của Vue instance mà nó thuộc về. Có một hạn chế là với mỗi binding chỉ có thể chứa <strong>một biểu thức đơn</strong>, Nên ví dụ dưới đây sẽ <strong>KHÔNG</strong> chạy:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- this is a statement, not an expression: --&gt;</span></div><div class="line">&#123;&#123; var a = 1 &#125;&#125;</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- flow control won't work either, use ternary expressions --&gt;</span></div><div class="line">&#123;&#123; if (ok) &#123; return message &#125; &#125;&#125;</div></pre></td></tr></table></figure>
-<p class="tip">Template expressions are sandboxed and only have access to a whitelist of globals such as <code>Math</code> and <code>Date</code>. You should not attempt to access user defined globals in template expressions.</p>
+<p class="tip">Các biểu thức bị đặt trong sandbox vàn chỉ có thể truy xuất các biến global trong whitelist như <code>Math</code> và <code>Date</code>. Bạn không nên cố truy xuất vào các biến global được user định nghĩa(user defined) khi đang ở trong các biểu thứ này.</p>
 
-<h2 id="Directives"><a href="#Directives" class="headerlink" title="Directives"></a>Directives</h2><p>Directives are special attributes with the <code>v-</code> prefix. Directive attribute values are expected to be <strong>a single JavaScript expression</strong> (with the exception for <code>v-for</code>, which will be discussed later). A directive’s job is to reactively apply side effects to the DOM when the value of its expression changes. Let’s review the example we saw in the introduction:</p>
+<h2 id="Directives"><a href="#Directives" class="headerlink" title="Directives"></a>Directives</h2><p>Directive là các thuộc tính đặt biệt với tiền tố <code>v-</code>. Giá trị của các thuộc tính directive được kỳ vọng là một <strong>biểu thức JavaScript đơn</strong> ( ngoại trừ <code>v-for</code>, chúng ta sẽ nói về nó sau ). Công việc của một directive là áp dụng các <span data-tooltip="Khi A thay đổi, kéo theo nhiều thứ khác thay đổi theo">side effect</span> từ sự thay đổi giá trị của các biểu thức (giá trị của nó) đến DOM một cách thụ động. Hãy xem lại ví dụ mà chúng ta đã gặp ở phần Giới thiệu. </p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"seen"</span>&gt;</span>Now you see me<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Here, the <code>v-if</code> directive would remove/insert the <code>&lt;p&gt;</code> element based on the truthiness of the value of the expression <code>seen</code>.</p>
-<h3 id="Arguments"><a href="#Arguments" class="headerlink" title="Arguments"></a>Arguments</h3><p>Some directives can take an “argument”, denoted by a colon after the directive name. For example, the <code>v-bind</code> directive is used to reactively update an HTML attribute:</p>
+<p>Ở dây, directive <code>v-if</code> sẽ xóa/chèn element <code>&lt;p&gt;</code> dựa trên giá trị đúng/sai của biểu thức <code>seen</code>.</p>
+<h3 id="Cac-tham-so"><a href="#Cac-tham-so" class="headerlink" title="Các tham số"></a>Các tham số</h3><p>Một số directive có thể chấp nhận một “tham số”, ký hiệu bằng dấu hai chấm ngay phía sau tên của nó. Ví dụ, directive <code>v-bind</code> được sử dụng để cập nhật một thuộc tính HTML như sau:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Here <code>href</code> is the argument, which tells the <code>v-bind</code> directive to bind the element’s <code>href</code> attribute to the value of the expression <code>url</code>.</p>
-<p>Another example is the <code>v-on</code> directive, which listens to DOM events:</p>
+<p>Ở đây <code>href</code> chính là tham số, nó nói directive <code>v-bind</code> hãy bind thuộc tính <code>href</code> với giá trị của biểu thức <code>url</code>.</p>
+<p>Một ví dụ khác là directive <code>v-on</code>, directive lắng nghe event của DOM:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">"doSomething"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Here the argument is the event name to listen to. We will talk about event handling in more detail too.</p>
-<h3 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h3><p>Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the <code>.prevent</code> modifier tells the <code>v-on</code> directive to call <code>event.preventDefault()</code> on the triggered event:</p>
+<p>Ở đây tham số chính là tên của event cần phải lắng nghe. Chúng ta cũng sẽ nói chi tiết về việc xử lý event sau. </p>
+<h3 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h3><p>Modifier là các hậu tố đặt biệt được ký hiệu bằng dấu chấm, nó biểu thị rằng directive nên hoạt động theo một cách đặt biệt nào đó. Ví dụ, modifier <code>.prevent</code> chỉ thị cho directive <code>v-on</code> gọi <code>event.preventDefault()</code> khi event được trigger: </p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">"onSubmit"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>We will see more use of modifiers later when we take a more thorough look at <code>v-on</code> and <code>v-model</code>.</p>
-<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>Vue.js allows you to define filters that can be used to apply common text formatting. Filters are usable in two places: <strong>mustache interpolations and <code>v-bind</code> expressions</strong>. Filters should be appended to the end of the JavaScript expression, denoted by the “pipe” symbol:</p>
+<p>Sau này chúng ta sẽ thấy nhiều ứng dụng của modifier hơn, khi chúng ta nhìn sâu hơn vào <code>v-on</code> và <code>v-model</code>.</p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>Vue.js cho phép bạn định nghĩa các filter thứ có thể được sử dụng để áp dụng định-dạng-text-thông-thường. Các filter có thể được sử dụng ở hai nơi: <strong>mustache interpolation và biểu thức <code>v-bind</code></strong>. Các filter nên được thêm vào phía sau của biểu thức Javascript, ký hiệu bằng biểu tượng “dấu gạch đứng”:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- in mustaches --&gt;</span></div><div class="line">&#123;&#123; message | capitalize &#125;&#125;</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- in v-bind --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"rawId | formatId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p class="tip">Vue 2.x filters can only be used inside mustache interpolations and <code>v-bind</code> expressions (the latter supported since 2.1.0), because filters are primarily designed for text transformation purposes. For more complex data transforms in other directives, you should use <a href="computed.html">Computed properties</a> instead.</p>
+<p class="tip">Các filter trong Vue 2.x chỉ có thể được sử dụng bên trong các mustache interpolation và các biểu thức <code>v-bind</code> (Được hỗ trợ từ phiên bản 2.1.0 trở về sau), bởi vì các filter chủ yếu được thiết kế cho các mục đích biến đổi text. Vơi các biến đổi dữ liệu phức tạo hơn, bạn nên sử dụng <a href="computed.html">Các thuộc tính computed</a></p>
 
-<p>The filter function always receives the expression’s value as the first argument.</p>
+<p>Một hàm filter luôn luôn nhận giá trị của <span data-tooltip="biểu thứ mà nó filter">biểu thức</span> trong tham số đầu tiên.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  filters: &#123;</div><div class="line">    <span class="attr">capitalize</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (!value) <span class="keyword">return</span> <span class="string">''</span></div><div class="line">      value = value.toString()</div><div class="line">      <span class="keyword">return</span> value.charAt(<span class="number">0</span>).toUpperCase() + value.slice(<span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Filters can be chained:</p>
+<p>Các filter có thể được ghép với nhau thành các mắt xích:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line">&#123;&#123; message | filterA | filterB &#125;&#125;</div></pre></td></tr></table></figure>
-<p>Filters are JavaScript functions, therefore they can take arguments:</p>
+<p>Filter là các hàm JavaScript, do đó chúng có thể nhận các tham số:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line">&#123;&#123; message | filterA('arg1', arg2) &#125;&#125;</div></pre></td></tr></table></figure>
-<p>Here, the plain string <code>&#39;arg1&#39;</code> will be passed into the filter as the second argument, and the value of expression <code>arg2</code> will be evaluated and passed in as the third argument.</p>
-<h2 id="Shorthands"><a href="#Shorthands" class="headerlink" title="Shorthands"></a>Shorthands</h2><p>The <code>v-</code> prefix serves as a visual cue for identifying Vue-specific attributes in your templates. This is useful when you are using Vue.js to apply dynamic behavior to some existing markup, but can feel verbose for some frequently used directives. At the same time, the need for the <code>v-</code> prefix becomes less important when you are building an <a href="https://en.wikipedia.org/wiki/Single-page_application" target="_blank" rel="external">SPA</a> where Vue.js manages every template. Therefore, Vue.js provides special shorthands for two of the most often used directives, <code>v-bind</code> and <code>v-on</code>:</p>
-<h3 id="v-bind-Shorthand"><a href="#v-bind-Shorthand" class="headerlink" title="v-bind Shorthand"></a><code>v-bind</code> Shorthand</h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- full syntax --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- shorthand --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="v-on-Shorthand"><a href="#v-on-Shorthand" class="headerlink" title="v-on Shorthand"></a><code>v-on</code> Shorthand</h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- full syntax --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">"doSomething"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- shorthand --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">"doSomething"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>They may look a bit different from normal HTML, but <code>:</code> and <code>@</code> are valid chars for attribute names and all Vue.js supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is totally optional, but you will likely appreciate it when you learn more about its usage later.</p>
+<p>Ở đây, chuỗi <code>&#39;arg1&#39;</code> sẽ được truyền vào cho filter như là tham số thứ hai, và giá trị của biểu thức <code>arg2</code> sẽ được xác định và truyền vào như là tham số thứ ba.</p>
+<h2 id="Cu-phap-rut-gon"><a href="#Cu-phap-rut-gon" class="headerlink" title="Cú pháp rút gọn"></a>Cú pháp rút gọn</h2><p>Tiền tố <code>v-</code> phục vụ như là một gợi ý trực quan cho việc xác định các thuộc tính nào là riêng biệt của Vue.js trong các template của bạn. Nó hữu ích khi bạn sử dụng Vue.js để áp dụng một <span data-tooltip="Từ gốc: dynamic behavior. Có thể hiểu là khi bạn muốn dùng Vue.js để đưa một hiệu ứng, hay tạo ra nhiều thay đổi ở DOM vào một đoạn code có sẵn.">hành vi động</span> lên một vài <span data-tooltip="Có thể trong markup đó có chứa một vài thuộc tính tùy biến khác của thư viện JavaScript khác hoặc là bạn tự code trong JavaScript, khi đó nó có thể làm bạn cảm thấy dễ nhầm lẫn giữa thuộc tính của bạn và thuộc tính của Vue.js, thậm chí là xung đột với nhau.">markup có sẵn</span>, như có thể tạo cảm giác hơi dài dòng đối với một số directive thường dùng. Cùng với đó, sự cần thiết của tiền đó <code>v-</code> trở nên kém quan trọng khi bạn xây dựng một <a href="https://en.wikipedia.org/wiki/Single-page_application" target="_blank" rel="external">SPA</a> nơi mà Vue.js quản lý tất cả template. Vì thế, Vue.js cung cấp các cách rút gọn đặt biệt cho hai directive thường dùng là <code>v-bind</code> và <code>v-on</code>:</p>
+<h3 id="Rut-gon-cua-v-bind"><a href="#Rut-gon-cua-v-bind" class="headerlink" title="Rút gọn của v-bind"></a>Rút gọn của <code>v-bind</code></h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- full syntax --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- shorthand --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Rut-gon-cua-v-on"><a href="#Rut-gon-cua-v-on" class="headerlink" title="Rút gọn của v-on"></a>Rút gọn của <code>v-on</code></h3><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- full syntax --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">"doSomething"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- shorthand --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">"doSomething"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Nhìn chúng có thể hơi khác biết một chút với HTML thông thường, nhưng <code>:</code> và <code>@</code> là các ký tự hợp lệ khi dùng trong tên của thuộc tính và tất cả những trình duyệt mà Vue.js hỗ trợ đều có thể phân tích nó một cách chính xác, chúng không hiển thị ra markup sau khi được render. Cú pháp rút gọn này thì hoàn toàn là tùy chọn, nhưng bạn sẽ đánh giá cao nó khi bạn tìm hiểu thêm về cách sử dụng của nó sau này. </p>
 
     
       <div class="guide-links">
         
-          <span>← <a href="/v2/guide/instance.html">The Vue Instance</a></span>
+          <span>← <a href="/v2/guide/instance.html">Vue Instance</a></span>
         
         
           <span style="float:right"><a href="/v2/guide/computed.html">Computed Properties and Watchers</a> →</span>
@@ -644,11 +646,13 @@
             </div>
             <script src="/js/smooth-scroll.min.js"></script>
         
-
+        <!-- tooltip lib -->
+        <script src="/js/vue.js"></script>
         <!-- main custom script for sidebars, version selects etc. -->        
         <script src="/js/css.escape.js"></script>
+        <script src="https://unpkg.com/popper.js"></script>
+        <script src="https://unpkg.com/tooltip.js"></script>
         <script src="/js/common.js"></script>
-
         <!-- search -->
         <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/search.css">

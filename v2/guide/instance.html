@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>The Vue Instance — Vue.js</title>
+        <title>Vue Instance — Vue.js</title>
         <meta charset="utf-8">
         <meta name="description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <meta property="og:type" content="article">
-        <meta property="og:title" content="The Vue Instance — Vue.js">
+        <meta property="og:title" content="Vue Instance — Vue.js">
         <meta property="og:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
         <meta property="og:image" content="https://vuejs.senviet.org/images/logo.png">
 
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="The Vue Instance — Vue.js">
+        <meta name="twitter:title" content="Vue Instance — Vue.js">
         <meta name="twitter:description" content="Vue.js - Trực quang, Nhanh và có khả năng tích hợp với MVVM để xây dựng giao diện có tính tương tác cao.">
         <meta name="twitter:image" content="https://vuejs.senviet.org/images/logo.png">
 
@@ -217,7 +217,7 @@
                 
                 
                 <li>
-                    <a href="/v2/guide/instance.html" class="sidebar-link current">The Vue Instance</a>
+                    <a href="/v2/guide/instance.html" class="sidebar-link current">Vue Instance</a>
                 </li>
             
                 
@@ -229,7 +229,7 @@
                 
                 
                 <li>
-                    <a href="/v2/guide/syntax.html" class="sidebar-link">Template Syntax</a>
+                    <a href="/v2/guide/syntax.html" class="sidebar-link">Cú pháp template</a>
                 </li>
             
                 
@@ -569,27 +569,27 @@
 
     
     
-      <h1>The Vue Instance</h1>
+      <h1>Vue Instance</h1>
     
-    <h2 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h2><p>Every Vue vm is bootstrapped by creating a <strong>root Vue instance</strong> with the <code>Vue</code> constructor function:</p>
+    <h2 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h2><p>Mỗi một Vue <span data-tooltip="Viết tắt của ViewModel">vm</span> được khởi tạo bằng cách tạo một <strong>root Vue instance</strong> với hàm khởi tạo <code>Vue</code>:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// options</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Although not strictly associated with the <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM pattern</a>, Vue’s design was partly inspired by it. As a convention, we often use the variable <code>vm</code> (short for ViewModel) to refer to our Vue instances.</p>
-<p>When you instantiate a Vue instance, you need to pass in an <strong>options object</strong> which can contain options for data, template, element to mount on, methods, lifecycle callbacks and more. The full list of options can be found in the <a href="../api">API reference</a>.</p>
-<p>The <code>Vue</code> constructor can be extended to create reusable <strong>component constructors</strong> with pre-defined options:</p>
+<p>Mặc dù không có mối liên hệ mật thiết với <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM</a>, nhưng thiết kế của Vue một phần được lấy cảm hứng từ nó. Để cho tiện, chúng thường sử dụng biến <code>vm</code> (viết tắc của ViewModel) để gán cho các Vue instance.</p>
+<p>Khi khởi tạo một Vue instance, bạn cần phải truyền vào một <strong>options</strong> để chứa các thuộc tính như data, template, element để <span data-tooltip="Element này giúp Vue xác định đúng DOM mà nó sẽ được gắn vào">gắn vào</span> (mount on), phương thức, các hàm callback của lifecyle và nhiều thứ nữa. Bạn có thể xem danh sách options đầy đủ tại <a href="../api">API reference</a>.</p>
+<p><code>Vue</code> constructor có thể được mở rộng để tạo ra các <strong>component constructor</strong> có khả năng tái sử dụng với options được định nghĩa trước:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = Vue.extend(&#123;</div><div class="line">  <span class="comment">// extension options</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// all instances of `MyComponent` are created with</span></div><div class="line"><span class="comment">// the pre-defined extension options</span></div><div class="line"><span class="keyword">var</span> myComponentInstance = <span class="keyword">new</span> MyComponent()</div></pre></td></tr></table></figure>
-<p>Although it is possible to create extended instances imperatively, most of the time it is recommended to compose them declaratively in templates as custom elements. We will talk about <a href="components.html">the component system</a> in detail later. For now, you just need to know that all Vue components are essentially extended Vue instances.</p>
-<h2 id="Properties-and-Methods"><a href="#Properties-and-Methods" class="headerlink" title="Properties and Methods"></a>Properties and Methods</h2><p>Each Vue instance <strong>proxies</strong> all the properties found in its <code>data</code> object:</p>
+<p>Mặc dù việc mở rộng như trên là hoàn toàn khả thi, tuy nhiên phần lớn đều khuyến thích việc đó nên được khai báo rõ ràng trong template như là những element tùy chỉnh (custom elements). Chúng ta sẽ nói chi tiết về <a href="components.html">hệ thống component</a> trong phần sau. Bây giờ, bạn chỉ cần biết rằng tất cả component trong Vue thì bản chất của nó là đều được mở rộng từ Vue instance.</p>
+<h2 id="Properties-va-Methods"><a href="#Properties-va-Methods" class="headerlink" title="Properties và Methods"></a>Properties và Methods</h2><p>Mỗi một Vue instance sẽ <strong>đại diện (proxies)</strong> cho tất cả các thành phần được tìm thấy trong <code>data</code> của instance đó.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.a === data.a <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// setting the property also affects original data</span></div><div class="line">vm.a = <span class="number">2</span></div><div class="line">data.a <span class="comment">// -&gt; 2</span></div><div class="line"></div><div class="line"><span class="comment">// ... and vice-versa</span></div><div class="line">data.a = <span class="number">3</span></div><div class="line">vm.a <span class="comment">// -&gt; 3</span></div></pre></td></tr></table></figure>
-<p>It should be noted that only these proxied properties are <strong>reactive</strong>. If you attach a new property to the instance after it has been created, it will not trigger any view updates. We will discuss the reactivity system in detail later.</p>
-<p>In addition to data properties, Vue instances expose a number of useful instance properties and methods. These properties and methods are prefixed with <code>$</code> to differentiate them from proxied data properties. For example:</p>
+<p>Nên nhớ rằng chỉ có những thành phần nào được đại diện thì mới <strong>reactive</strong>. Nếu bạn thêm một thành phần mới vào instance sau khi nó được khởi tạo, thì thành phần đó sẽ không trigger bắt kì sự thay đổi nào của view. Chúng ta sẽ thảo luận chi tiết về hệ thống reactive trong phần sau.</p>
+<p>Ngoài các thành phần của <code>data</code> ra, thì Vue instance cũng cung cấp một số <span data-tooltip="Những thành phần và phương thức này không nằm trong data">thành phần và phương thức</span> hữu ích khác. Những thành phần và phương thức này được dánh dấu bằng tiền tố là <code>$</code> để phân biệt với các thành phần của <code>data</code>. Ví dụ như:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#example'</span>,</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data <span class="comment">// -&gt; true</span></div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>) <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// $watch is an instance method</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newVal, oldVal</span>) </span>&#123;</div><div class="line">  <span class="comment">// this callback will be called when `vm.a` changes</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p class="tip">Don’t use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">arrow functions</a> on an instance property or callback (e.g. <code>vm.$watch(&#39;a&#39;, newVal =&gt; this.myMethod())</code>). As arrow functions are bound to the parent context, <code>this</code> will not be the Vue instance as you’d expect and <code>this.myMethod</code> will be undefined.</p>
+<p class="tip">Không được sử dụng <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">các hàm mũi tên (arrow functions)</a> trong các thành phần hoặc hàm callback của instance (ví dụ <code>vm.$watch(&#39;a&#39;, newVal =&gt; this.myMethod())</code>). As arrow functions are bound to the parent context, <code>this</code> sẽ không phải là một Vue instance như bạn mong dợi và <code>this.myMethod</code> sẽ không thể xác định được (undefined).</p>
 
-<p>Consult the <a href="../api">API reference</a> for the full list of instance properties and methods.</p>
-<h2 id="Instance-Lifecycle-Hooks"><a href="#Instance-Lifecycle-Hooks" class="headerlink" title="Instance Lifecycle Hooks"></a>Instance Lifecycle Hooks</h2><p>Each Vue instance goes through a series of initialization steps when it is created - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. Along the way, it will also invoke some <strong>lifecycle hooks</strong>, which give us the opportunity to execute custom logic. For example, the <a href="../api/#created"><code>created</code></a> hook is called after the instance is created:</p>
+<p>Xem thêm <a href="../api">API reference</a> để nắm hết danh sách các thành phần và phương thức của một instance.</p>
+<h2 id="Instance-Lifecycle-Hooks"><a href="#Instance-Lifecycle-Hooks" class="headerlink" title="Instance Lifecycle Hooks"></a>Instance Lifecycle Hooks</h2><p>Mỗi một Vue instance sẽ phải trải qua nhiều bước trước khi nó được tạo - lấy ví dụ, nó cần phải trải qua các bước như set up dữ liệu, biên dịch template, gắn instance vào DOM, cập nhật lại DOM khi dữ liệu thay đổi. Trong suốt quá trình đó, Vue instance cũng sẽ gọi ra một số <strong>lifecycle hooks</strong>, những hook này sẽ giúp chúng ta có thể thực thi những hành động logic. Ví dụ như hook <code>created</code> được gọi sau khi tạo instance:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">created</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// `this` points to the vm instance</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// -&gt; "a is: 1"</span></div></pre></td></tr></table></figure>
-<p>There are also other hooks which will be called at different stages of the instance’s lifecycle, for example <a href="../api/#mounted"><code>mounted</code></a>, <a href="../api/#updated"><code>updated</code></a>, and <a href="../api/#destroyed"><code>destroyed</code></a>. All lifecycle hooks are called with their <code>this</code> context pointing to the Vue instance invoking it. You may have been wondering where the concept of “controllers” lives in the Vue world and the answer is: there are no controllers. Your custom logic for a component would be split among these lifecycle hooks.</p>
-<h2 id="Lifecycle-Diagram"><a href="#Lifecycle-Diagram" class="headerlink" title="Lifecycle Diagram"></a>Lifecycle Diagram</h2><p>Below is a diagram for the instance lifecycle. You don’t need to fully understand everything going on right now, but this diagram will be helpful in the future.</p>
+<p>Cũng sẽ có thêm những hook khác được gọi ở những phiên khác nhau trong vòng đời của một instance (instance’s lifecycle), ví dụ như <a href="../api/#mounted"><code>mounted</code></a>, <a href="../api/#updated"><code>updated</code></a>, và <a href="../api/#destroyed"><code>destroyed</code></a>. Tất cả các lifecycle hook được gọi ra với ngữ cảnh <code>this</code> đang trỏ tới Vue instance đang gọi chúng. Có thể bạn sẽ thắc mắc rằng khái niệm “controllers” sẽ tồn tại ở đâu trong thế giới của Vue và câu trả lời là: chẳng có controllers nào cả. Những hành động logic của bạn cho một component sẽ được chia ra trong các lifecycle hook này.</p>
+<h2 id="Bieu-do-ve-vong-doi"><a href="#Bieu-do-ve-vong-doi" class="headerlink" title="Biểu đồ về vòng đời"></a>Biểu đồ về vòng đời</h2><p>Bên dưới đây là một biểu đồ cho vòng đời của một instance. Bạn không cần phải hiểu hoàn toàn mọi thứ trong biểu đồ ngay bây giờ, tuy nhiên bạn cứ xem qua vì nó sẽ giúp ích rất nhiều trong tương lai.</p>
 <p><img src="/images/lifecycle.png" alt="Lifecycle"></p>
 
     
@@ -598,7 +598,7 @@
           <span>← <a href="/v2/guide/index.html">Giới thiệu</a></span>
         
         
-          <span style="float:right"><a href="/v2/guide/syntax.html">Template Syntax</a> →</span>
+          <span style="float:right"><a href="/v2/guide/syntax.html">Cú pháp template</a> →</span>
         
       </div>
     
@@ -614,11 +614,13 @@
             </div>
             <script src="/js/smooth-scroll.min.js"></script>
         
-
+        <!-- tooltip lib -->
+        <script src="/js/vue.js"></script>
         <!-- main custom script for sidebars, version selects etc. -->        
         <script src="/js/css.escape.js"></script>
+        <script src="https://unpkg.com/popper.js"></script>
+        <script src="https://unpkg.com/tooltip.js"></script>
         <script src="/js/common.js"></script>
-
         <!-- search -->
         <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/search.css">

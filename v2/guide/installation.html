@@ -217,7 +217,7 @@
                 
                 
                 <li>
-                    <a href="/v2/guide/instance.html" class="sidebar-link">The Vue Instance</a>
+                    <a href="/v2/guide/instance.html" class="sidebar-link">Vue Instance</a>
                 </li>
             
                 
@@ -229,7 +229,7 @@
                 
                 
                 <li>
-                    <a href="/v2/guide/syntax.html" class="sidebar-link">Template Syntax</a>
+                    <a href="/v2/guide/syntax.html" class="sidebar-link">Cú pháp template</a>
                 </li>
             
                 
@@ -573,16 +573,16 @@
     
     <h3 id="Tuong-thich-trinh-duyet"><a href="#Tuong-thich-trinh-duyet" class="headerlink" title="Tương thích trình duyệt"></a>Tương thích trình duyệt</h3><p>Vue <strong>không</strong> hỗ trợ trình duyệt IE từ phiên bản 8 trở xuống, vì nó sử dụng những tính năng của ECMAScript5 mà trong IE8 không có. Tuy nhiên Vue sẽ hỗ trợ tất cả các <a href="http://caniuse.com/#feat=es5" target="_blank" rel="external">trình duyệt tương thích với ECMAScript 5</a>.</p>
 <h3 id="Nhung-ghi-chu-ve-viec-phat-hanh"><a href="#Nhung-ghi-chu-ve-viec-phat-hanh" class="headerlink" title="Những ghi chú về việc phát hành"></a>Những ghi chú về việc phát hành</h3><p>Những thông tin chi tiết về việc phát hành cho từng phiên bản được ghi chú đầy đủ trên  <a href="https://github.com/vuejs/vue/releases" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Standalone"><a href="#Standalone" class="headerlink" title="Standalone"></a>Standalone</h2><p>Chỉ cần tải về và chèn vào trong thẻ script. <code>Vue</code> sẽ được đăng kí nhưng một biến global.</p>
+<h2 id="Standalone"><a href="#Standalone" class="headerlink" title="Standalone"></a>Standalone</h2><p>Chỉ cần tải về và chèn vào trong thẻ script. <code>Vue</code> sẽ được đăng kí như một biến global.</p>
 <p class="tip">Không sử dụng phiên bản minified trong quá trình phát triển. Vì bạn sẽ bỏ lỡ tất cả cảnh báo của Vue khi xảy ra những lỗi thường gặp.</p>
 
-<div id="downloads"><br><a class="button" href="/js/vue.js" download="">Dành cho Development</a><span class="light info">Bao gồm đầy đủ cảnh báo và debug mode</span><br><br><a class="button" href="/js/vue.min.js" download="">Dành cho Production</a><span class="light info">Cảnh báo đã được loại bỏ, 25.86kb min+gzip</span><br></div>
+<div id="downloads"><br><a class="button" href="/js/vue.js" download="">Phiên bản Development</a><span class="light info">Bao gồm đầy đủ cảnh báo và debug mode</span><br><br><a class="button" href="/js/vue.min.js" download="">Phiên bản Production</a><span class="light info">Cảnh báo đã được loại bỏ, 25.86kb min+gzip</span><br></div>
 
 <h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>Khuyến khích cài đặt theo cách này: <a href="https://unpkg.com/vue/dist/vue.js" target="_blank" rel="external">unpkg</a> (chỉ cần copy đường dẫn), đây sẽ luôn là phiên bản mới nhất trùng khớp với phiên bản được phát hành trên npm. Bạn cũng có thể duyệt xem package của Vue trên npm tại <a href="https://unpkg.com/vue/" target="_blank" rel="external">unpkg.com/vue/</a>.</p>
 <p>Ngoài ra bạn cũng có thể sử dụng <a href="//cdn.jsdelivr.net/vue/2.1.10/vue.js">jsDelivr</a> hoặc <a href="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js">cdnjs</a>, nhưng hai dịch vụ này phải mất một ít thời gian để đồng bộ vì vậy phiên bản mới nhất có thể sẽ chưa được cập nhật kịp thời.</p>
-<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><p>NPM là một phương pháp cài đặt được khuyến khích sử dụng khi xây dựng những ứng dụng lớn với Vue. Nó kết hợp một cách tuyệt vời với các module bundlers như <a href="https://webpack.js.org/" target="_blank" rel="external">Webpack</a> hoặc <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a>. Vue cũng cung cấp accompanying tools for authoring <a href="single-file-components.html">Single File Components</a>.</p>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><p>NPM là một phương pháp cài đặt được khuyến khích sử dụng khi xây dựng những ứng dụng lớn với Vue. Nó kết hợp một cách tuyệt vời với các module bundlers như <a href="https://webpack.js.org/" target="_blank" rel="external">Webpack</a> hoặc <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a>. Vue cũng cung cấp các công cụ kèm theo để tạo ra <a href="single-file-components.html">Single File Components</a>.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># latest stable</span></div><div class="line">$ npm install vue</div></pre></td></tr></table></figure>
-<h3 id="Standalone-vs-Runtime-only-Build"><a href="#Standalone-vs-Runtime-only-Build" class="headerlink" title="Standalone vs. Runtime-only Build"></a>Standalone vs. Runtime-only Build</h3><p>Hiện tại có hai loại build là standalone build và runtime-only build. Sự khác biệt giữa hai loại nằm ở việc standalone build thì bao gồm <strong>trình biên dịch template</strong> còn runtime-only build thì không.</p>
+<h3 id="Standalone-Build-va-Runtime-only-Build"><a href="#Standalone-Build-va-Runtime-only-Build" class="headerlink" title="Standalone Build và Runtime-only Build"></a>Standalone Build và Runtime-only Build</h3><p>Hiện tại có hai loại build là standalone build và runtime-only build. Sự khác biệt giữa hai loại nằm ở việc standalone build thì bao gồm <strong>trình biên dịch template</strong> còn runtime-only build thì không.</p>
 <p>Trình biên dịch templates có trách nhiệm biên dịch Vue template strings thành các hàm render thuần Javascript. Nếu bạn muốn sử dụng <code>template</code> option, thì bạn cần có trình biên dịch.</p>
 <ul>
 <li><p>Standalone build bao gồm trình biên dịch và hỗ trợ <code>template</code> option. <strong>Nó cũng phụ thuộc vào các API của trình duyệt, vì vậy bạn không thể sử dụng standalone build cho server-side rendering.</strong></p>
@@ -596,16 +596,16 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="string">"browser"</span>: &#123;</div><div class="line">  <span class="string">"vue"</span>: <span class="string">"vue/dist/vue.common"</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
 <p class="tip">KHÔNG được <code>import Vue from &#39;vue/dist/vue.js&#39;</code> - bởi vì một vài thư viện bên thứ 3 có thể đã import Vue rồi, nếu bạn import như vậy có thể khiến cho app phải tải cả hai dạng là runtime và standalone build cùng lúc và điều này sẽ dấn đến lỗi.</p>
 
-<h3 id="Moi-truong-CSP"><a href="#Moi-truong-CSP" class="headerlink" title="Môi trường CSP"></a>Môi trường CSP</h3><p>Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng <code>new Function()</code> for evaluating expressions. Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.</p>
+<h3 id="Moi-truong-CSP"><a href="#Moi-truong-CSP" class="headerlink" title="Môi trường CSP"></a>Môi trường CSP</h3><p>Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng <code>new Function()</code> để <span data-tooltip="evaluating expressions">đánh giá các biểu thức</span>  . Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.</p>
 <p>Mặt khác, runtime-only build thì hoàn toàn phù hợp cho môi trường CSP. Khi sử dụng runtime-only build với <a href="https://github.com/vuejs-templates/webpack-simple" target="_blank" rel="external">Webpack + vue-loader</a> hoặc <a href="https://github.com/vuejs-templates/browserify-simple" target="_blank" rel="external">Browserify + vueify</a>, những template của bạn sẽ được biên dịch vào trong các hàm <code>render</code>, những hàm đó hoạt động hoàn hảo trong các môi trường CSP.</p>
 <h2 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h2><p>Vue.js cung cấp một <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">CLI - bản chính thức</a> giúp cho việc khởi tạo những Single Page Applications được nhanh chóng hơn. It provides batteries-included build setups for a modern frontend workflow. Chỉ tốn một vài phút để để khởi tạo và chạy với hot-reload, lint-on-save, and production-ready builds:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># install vue-cli</span></div><div class="line">$ npm install --global vue-cli</div><div class="line"><span class="comment"># create a new project using the "webpack" template</span></div><div class="line">$ vue init webpack my-project</div><div class="line"><span class="comment"># install dependencies and go!</span></div><div class="line">$ <span class="built_in">cd</span> my-project</div><div class="line">$ npm install</div><div class="line">$ npm run dev</div></pre></td></tr></table></figure>
 <p class="tip">Việc sử dụng CLI đòi hỏi bạn cần có kiến thức về Node.js và những công cụ build liên quan. Nếu bạn mới làm quen với Vue hoặc những công cụ build dành cho front-end thì chúng tôi đề nghị bạn xem qua <a href="./">hướng dẫn</a> không sử dụng bất kì công cụ build nào trước khi sử dụng CLI.</p>
 
-<h2 id="Dev-Build"><a href="#Dev-Build" class="headerlink" title="Dev Build"></a>Dev Build</h2><p><strong>Quan trọng</strong>: những files được build ra trong thư mục <code>/dist</code> trên Github chỉ được cập nhật mỗi lần phát hành phiên bản mới. Vì vậy nếu muốn sử dụng Vue từ những files này bạn cần phải tự build!</p>
+<h2 id="Dev-Build"><a href="#Dev-Build" class="headerlink" title="Dev Build"></a>Dev Build</h2><p><strong>Quan trọng</strong>: những files được build ra trong thư mục <code>/dist</code> trên Github chỉ được cập nhật mỗi lần phát hành phiên bản mới. Vì vậy nếu muốn sử dụng Vue từ những files đó bạn cần phải tự build!</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/vuejs/vue.git node_modules/vue</div><div class="line"><span class="built_in">cd</span> node_modules/vue</div><div class="line">npm install</div><div class="line">npm run build</div></pre></td></tr></table></figure>
 <h2 id="Bower"><a href="#Bower" class="headerlink" title="Bower"></a>Bower</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># latest stable</span></div><div class="line">$ bower install vue</div></pre></td></tr></table></figure>
-<h2 id="AMD-Module-Loaders"><a href="#AMD-Module-Loaders" class="headerlink" title="AMD Module Loaders"></a>AMD Module Loaders</h2><p>Những bản tải về standalone hoặc được cài đặt từ Bower thì đã được wrapped với UMD vì vậy chúng có thể được sử dụng trược tiếp như một AMD module.</p>
+<h2 id="AMD-Module-Loaders"><a href="#AMD-Module-Loaders" class="headerlink" title="AMD Module Loaders"></a>AMD Module Loaders</h2><p>Những bản tải về standalone hoặc được cài đặt từ Bower thì đã được bao bọc với <span data-tooltip="Universal Module Definition">UMD</span> vì vậy chúng có thể được sử dụng trược tiếp như một <span data-tooltip="Asynchronous Module Definition">AMD</span> module.</p>
 
     
       <div class="guide-links">
@@ -627,11 +627,13 @@
             </div>
             <script src="/js/smooth-scroll.min.js"></script>
         
-
+        <!-- tooltip lib -->
+        <script src="/js/vue.js"></script>
         <!-- main custom script for sidebars, version selects etc. -->        
         <script src="/js/css.escape.js"></script>
+        <script src="https://unpkg.com/popper.js"></script>
+        <script src="https://unpkg.com/tooltip.js"></script>
         <script src="/js/common.js"></script>
-
         <!-- search -->
         <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/search.css">

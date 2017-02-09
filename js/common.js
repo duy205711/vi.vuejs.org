@@ -6,6 +6,7 @@
     initSubHeaders()
     initApiSpecLinks()
     initLocationHashFuzzyMatching()
+    initTooltip()
   }
 
   function initApiSpecLinks () {
@@ -306,5 +307,22 @@
       link.parentNode.insertBefore(wrapper, link)
       wrapper.appendChild(link)
     }
+  }
+
+  /**
+   * Tooltip
+   */
+
+  function initTooltip(){
+    document.addEventListener('DOMContentLoaded', function(){
+      var tooltips = document.querySelectorAll('[data-tooltip]')
+      tooltips.forEach(function (el){
+        var title = el.getAttribute('data-tooltip')
+        new Tooltip(el, {
+          placement: "top",
+          title: title
+        })
+      })
+    });
   }
 })()
