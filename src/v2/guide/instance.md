@@ -6,7 +6,7 @@ order: 3
 
 ## Constructor
 
-Mỗi một Vue <span data-tooltip="Viết tắt của ViewModel">vm</span> được khởi tạo bằng cách tạo một **root Vue instance** với hàm khởi tạo `Vue`:
+Mỗi một Vue <span data-tooltip="Viết tắt của ViewModel">vm</span> được khởi tạo (bootstrapped) bằng cách tạo một **root Vue instance** với hàm khởi tạo `Vue`:
 
 ``` js
 var vm = new Vue({
@@ -14,11 +14,11 @@ var vm = new Vue({
 })
 ```
 
-Mặc dù không có mối liên hệ mật thiết với [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), nhưng thiết kế của Vue một phần được lấy cảm hứng từ nó. Để cho tiện, chúng thường sử dụng biến `vm` (viết tắc của ViewModel) để gán cho các Vue instance.
+Mặc dù không có mối liên hệ mật thiết với [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), nhưng thiết kế của Vue một phần được lấy cảm hứng từ nó. Để cho tiện, chúng thường sử dụng biến `vm` (viết tắc của ViewModel) để ám chỉ cho các Vue instance.
 
-Khi khởi tạo một Vue instance, bạn cần phải truyền vào một **options** để chứa các thuộc tính như data, template, element để <span data-tooltip="Element này giúp Vue xác định đúng DOM mà nó sẽ được gắn vào">gắn vào</span> (mount on), phương thức, các hàm callback của lifecyle và nhiều thứ nữa. Bạn có thể xem danh sách options đầy đủ tại [API reference](../api).
+Khi khởi tạo một Vue instance, bạn cần phải truyền vào một **options object** có chứa các thuộc tính như data, template, element để <span data-tooltip="Element này giúp Vue instance xác định đúng DOM mà nó sẽ được gắn vào">gắn vào</span> (mount on), phương thức, các hàm callback của lifecyle và nhiều thứ nữa. Bạn có thể xem danh sách các option đầy đủ tại [API reference](../api).
 
-`Vue` constructor có thể được mở rộng để tạo ra các **component constructor** có khả năng tái sử dụng với options được định nghĩa trước:
+`Vue` constructor có thể được kế thừa để tạo ra các **component constructor** có khả năng tái sử dụng với các option được định nghĩa trước:
 
 ``` js
 var MyComponent = Vue.extend({
@@ -30,11 +30,13 @@ var MyComponent = Vue.extend({
 var myComponentInstance = new MyComponent()
 ```
 
-Mặc dù việc mở rộng như trên là hoàn toàn khả thi, tuy nhiên phần lớn đều khuyến thích việc đó nên được khai báo rõ ràng trong template như là những element tùy chỉnh (custom elements). Chúng ta sẽ nói chi tiết về [hệ thống component](components.html) trong phần sau. Bây giờ, bạn chỉ cần biết rằng tất cả component trong Vue thì bản chất của nó là đều được mở rộng từ Vue instance.
+Mặc dù việc kế thừa như trên là hoàn toàn khả thi, tuy nhiên thông thường đều khuyến thích việc đó nên được khai báo rõ ràng trong các template như là những element tùy chỉnh (custom elements). Chúng ta sẽ nói chi tiết về [hệ thống component](components.html) trong phần sau. Bây giờ, bạn chỉ cần biết rằng tất cả component trong Vue thì bản chất của nó là đều được kế thừa từ Vue instance.
 
-## Properties và Methods
+## Property và Method
 
-Mỗi một Vue instance sẽ **đại diện (proxies)** cho tất cả các thành phần được tìm thấy trong `data` của instance đó.
+<p class="tip">Hai từ Property và Method có thể hiểu trong ngữ cảnh của một Vue instance là các thành phần, phương thức của instance đó. Tuy nhiên chúng tôi quyết định sử dụng tiếng Anh như là một thuật ngữ để bạn đọc có thể dễ hiểu và quen thuộc hơn.</p>
+
+Mỗi một Vue instance sẽ **đại diện (proxies)** cho tất cả các property có trong `data` của instance đó.
 
 ``` js
 var data = { a: 1 }
@@ -53,9 +55,9 @@ data.a = 3
 vm.a // -> 3
 ```
 
-Nên nhớ rằng chỉ có những thành phần nào được đại diện thì mới **reactive**. Nếu bạn thêm một thành phần mới vào instance sau khi nó được khởi tạo, thì thành phần đó sẽ không trigger bắt kì sự thay đổi nào của view. Chúng ta sẽ thảo luận chi tiết về hệ thống reactive trong phần sau.
+Nên nhớ rằng chỉ có những property nào được đại diện thì mới **reactive**. Nếu bạn thêm một property mới vào instance sau khi nó được khởi tạo, thì property đó sẽ không bắt được bất kì sự thay đổi nào của view. Chúng ta sẽ thảo luận chi tiết về hệ thống reactive trong phần sau.
 
-Ngoài các thành phần của `data` ra, thì Vue instance cũng cung cấp một số <span data-tooltip="Những thành phần và phương thức này không nằm trong data">thành phần và phương thức</span> hữu ích khác. Những thành phần và phương thức này được dánh dấu bằng tiền tố là `$` để phân biệt với các thành phần của `data`. Ví dụ như:
+Ngoài các property của `data` ra, thì Vue instance cũng cung cấp một số <span data-tooltip="Những property và method này không nằm trong data">property và method</span> hữu ích khác, chúng được dánh dấu bằng tiền tố là `$` để phân biệt với các property của `data`. Ví dụ như:
 
 ``` js
 var data = { a: 1 }
@@ -73,11 +75,11 @@ vm.$watch('a', function (newVal, oldVal) {
 })
 ```
 
-<p class="tip">Không được sử dụng [các hàm mũi tên (arrow functions)](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) trong các thành phần hoặc hàm callback của instance (ví dụ `vm.$watch('a', newVal => this.myMethod())`). As arrow functions are bound to the parent context, `this` sẽ không phải là một Vue instance như bạn mong dợi và `this.myMethod` sẽ không thể xác định được (undefined).</p>
+<p class="tip">Không được sử dụng [các hàm mũi tên (arrow functions)](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) trong các property hoặc hàm callback của instance (ví dụ `vm.$watch('a', newVal => this.myMethod())`). Những hàm mũi tên này bị bind vào trong <span data-tooltip="Chỗ này có thể hiểu là this sẽ không phải là vm mà sẽ là this của đoạn code cha bao ngoài hàm mũi tên">parent context</span>, `this` sẽ không phải là một Vue instance như bạn mong dợi và `this.myMethod` sẽ không thể xác định được (undefined).</p>
 
 Xem thêm [API reference](../api) để nắm hết danh sách các thành phần và phương thức của một instance.
 
-## Instance Lifecycle Hooks
+## Các Hook của một Instance Lifecycle
 
 Mỗi một Vue instance sẽ phải trải qua nhiều bước trước khi nó được tạo - lấy ví dụ, nó cần phải trải qua các bước như set up dữ liệu, biên dịch template, gắn instance vào DOM, cập nhật lại DOM khi dữ liệu thay đổi. Trong suốt quá trình đó, Vue instance cũng sẽ gọi ra một số **lifecycle hooks**, những hook này sẽ giúp chúng ta có thể thực thi những hành động logic. Ví dụ như hook `created` được gọi sau khi tạo instance:
 

@@ -76,7 +76,7 @@ resolve: {
 
 ### Môi trường CSP
 
-Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng `new Function()` để <span data-tooltip="evaluating expressions">đánh giá các biểu thức</span>  . Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.
+Trong một vài môi trường như Google Chrome Apps, Content Security Policy (CSP) là những môi trường nghiêm cấm việc sử dụng `new Function()` để xử lí biểu thức. Standalone build phụ thuộc vào tính năng này để biên dịch các template, vì vậy nó không thể sử dụng được trong môi trường CSP.
 
 Mặt khác, runtime-only build thì hoàn toàn phù hợp cho môi trường CSP. Khi sử dụng runtime-only build với [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) hoặc [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), những template của bạn sẽ được biên dịch vào trong các hàm `render`, những hàm đó hoạt động hoàn hảo trong các môi trường CSP.
 
