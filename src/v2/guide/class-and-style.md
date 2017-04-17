@@ -1,24 +1,26 @@
 ---
-title: Class and Style Bindings
+title: Class và Style Bindings
 type: guide
 order: 6
 ---
 
-A common need for data binding is manipulating an element's class list and its inline styles. Since they are both attributes, we can use `v-bind` to handle them: we just need to calculate a final string with our expressions. However, meddling with string concatenation is annoying and error-prone. For this reason, Vue provides special enhancements when `v-bind` is used with `class` and `style`. In addition to strings, the expressions can also evaluate to objects or arrays.
+<p class="tip">Mình sử dụng **bind** như một thuật ngữ. Bạn có thể hiểu đây là ràng buộc dữ liệu, Giả sử ta có dữ liệu A, ta muốn ràng buộc nó với một DOM nào đó, sự thay đổi của hai đối tượng này bị ràng buộc vào nhau.</p>
+
+Một nhu cầu rất thông dụng về data binding là điều khiển class và inline style của element. Nhờ các element hỗ trợ cả hai thuộc tính này, chúng ta có thể sử dụng `v-bind`để xử lý: Chúng ta chỉ cần tính toán các style, class thành một chuỗi là được. Tuy nhiên, sử dụng chỗi trong trường hợp này lại rất phiền phức và dễ gặp lỗi. Vì lý do đó, Vue cung cấp các cải tiến đặt biệt khi sử dụng `v-bind` để bind `class` và `style`. Ngoài chuỗi, các biểu thức có thể trả về các object hoặc array.
 
 ## Binding HTML Classes
 
-### Object Syntax
+### Cú pháp kiểu Object
 
-We can pass an object to `v-bind:class` to dynamically toggle classes:
+Chúng ta có thể truyền một object vào `v-bind:class` để bật, tắt các class một cách tự động:
 
 ``` html
 <div v-bind:class="{ active: isActive }"></div>
 ```
 
-The above syntax means the presence of the `active` class will be determined by the [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) of the data property `isActive`.
+Cú pháp ở trên có nghĩa là sự xuất hiện của class `active` sẽ được quyết định bởi giá trị của [đúng/sai](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) của thuộc tính `isActive`.
 
-You can have multiple classes toggled by having more fields in the object. In addition, the `v-bind:class` directive can also co-exist with the plain `class` attribute. So given the following template:
+Bạn có thể tắt/mở nhiều class bằng cách truyền vào object có nhiều <span data-tooltip="field">trường</span>. Hơn nữa, directive `v-bind:class` còn có thể cùng xuất hiện với thuộc tính `class`. Template dưới đây là một ví dụ:
 
 ``` html
 <div class="static"
@@ -26,7 +28,7 @@ You can have multiple classes toggled by having more fields in the object. In ad
 </div>
 ```
 
-And the following data:
+Và thuộc tính data như sau:
 
 ``` js
 data: {
@@ -35,15 +37,15 @@ data: {
 }
 ```
 
-It will render:
+Kết quả:
 
 ``` html
 <div class="static active"></div>
 ```
 
-When `isActive` or `hasError` changes, the class list will be updated accordingly. For example, if `hasError` becomes `true`, the class list will become `"static active text-danger"`.
+Khi `isActive` hoặc `hasError` thay đổi, Danh sách class sẽ cập nhật theo tương ứng. Ví dụ, Nếu `hasError` thay đổi thành `true`, danh sách class sẽ đổi thành `"static active text-danger"`.
 
-The bound object doesn't have to be inline:
+Object này không nhất thiết phải <span data-tooltip="Kiểu khai báo như ví dụ nảy giờ">inline</span>:
 
 ``` html
 <div v-bind:class="classObject"></div>
@@ -57,7 +59,7 @@ data: {
 }
 ```
 
-This will render the same result. We can also bind to a [computed property](computed.html) that returns an object. This is a common and powerful pattern:
+Nó sẽ render kết quả tương tự như ví dụ trước. Chúng ta cũng có thể bind với một [computed property](computed.html) nếu computed property này trả về một object. Đây là một <span data-tooltip="pattern">mẫu</span> rất hữu dụng: 
 
 ``` html
 <div v-bind:class="classObject"></div>
@@ -77,9 +79,9 @@ computed: {
 }
 ```
 
-### Array Syntax
+### Cú pháp kiểu array
 
-We can pass an array to `v-bind:class` to apply a list of classes:
+Chúng ta có thể truyền một array vào `v-bind:class`:
 
 ``` html
 <div v-bind:class="[activeClass, errorClass]">
@@ -91,33 +93,33 @@ data: {
 }
 ```
 
-Which will render:
+Nó sẽ render thành:
 
 ``` html
 <div class="active text-danger"></div>
 ```
 
-If you would like to also toggle a class in the list conditionally, you can do it with a ternary expression:
+Nếu bạn luốn bật/tắt một class theo điều kiện, bạn có thể sử dụng cú pháp điều kiện rút gọn:
 
 ``` html
 <div v-bind:class="[isActive ? activeClass : '', errorClass]">
 ```
 
-This will always apply `errorClass`, but will only apply `activeClass` when `isActive` is `true`.
+Class `errorClass` sẽ luôn xuất hiện, nhưng `activeClass` chỉ xuất hiện khi `isActive` là `true`
 
-However, this can be a bit verbose if you have multiple conditional classes. That's why it's also possible to use the object syntax inside array syntax:
+Tuy nhiên, nó có thể rườm rà nếu bạn muốn áp dụng điều kiện cho nhiều class. Đó là lý do tại sao cú pháp kiểu object được hỗ trợ bên trong cú pháp array:
 
 ``` html
 <div v-bind:class="[{ active: isActive }, errorClass]">
 ```
 
-### With Components
+### Dùng với Component
 
-> This section assumes knowledge of [Vue Components](components.html). Feel free to skip it and come back later.
+> Phần này tóm gọn kiến thức của [Vue Components](components.html). Cứ thoải mái bỏ qua nó và đọc lại sau.
 
-When you use the `class` attribute on a custom component, those classes will be added to the component's root element. Existing classes on this element will not be overwritten.
+Khi bạn sử dụng attribute `class` trong một component, các class này sẽ được thêm vào trong element gốc của component. Các class đang tồn tại trong element đó sẽ không bị ghi đè.
 
-For example, if you declare this component:
+Ví dụ, nếu bạn khai báo một component như sau:
 
 ``` js
 Vue.component('my-component', {
@@ -125,25 +127,25 @@ Vue.component('my-component', {
 })
 ```
 
-Then add some classes when using it:
+Sau đó thêm một số class khi sử dụng nó:
 
 ``` html
 <my-component class="baz boo"></my-component>
 ```
 
-The rendered HTML will be:
+Kết quả sẽ như sau:
 
 ``` html
 <p class="foo bar baz boo">Hi</p>
 ```
 
-The same is true for class bindings:
+Bind class cũng tương tự như vậy:
 
 ``` html
 <my-component v-bind:class="{ active: isActive }"></my-component>
 ```
 
-When `isActive` is truthy, the rendered HTML will be:
+Khi `isActive` có giá trị `đúng`, Code HTMl sẽ được render ra như sau:
 
 ``` html
 <p class="foo bar active">Hi</p>
@@ -151,9 +153,9 @@ When `isActive` is truthy, the rendered HTML will be:
 
 ## Binding Inline Styles
 
-### Object Syntax
+### Cú pháp kiểu object
 
-The object syntax for `v-bind:style` is pretty straightforward - it looks almost like CSS, except it's a JavaScript object. You can use either camelCase or kebab-case (use quotes with kebab-case) for the CSS property names:
+Cú pháp kiểu object cho `v-bind:style` rất đơn giản, rõ ràng - nhìn nó gần giống như CSS, ngoại trừ nó là một object trong javascript. Bạn có thể sửa dụng camelCase hoăc kebab-case (Đối với kebab-case bạn phải dùng kèm dấu nháy) để đặt tên cho các thuộc tính CSS:
 
 ``` html
 <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
@@ -165,7 +167,7 @@ data: {
 }
 ```
 
-It is often a good idea to bind to a style object directly so that the template is cleaner:
+Để template được rõ ràng, bạn nên bind kiểu object:
 
 ``` html
 <div v-bind:style="styleObject"></div>
@@ -179,11 +181,11 @@ data: {
 }
 ```
 
-Again, the object syntax is often used in conjunction with computed properties that return objects.
+Một lần nữa, cú pháp object thường được sử dụng với các computed property trả về object:
 
-### Array Syntax
+### Cú pháp kiểu array
 
-The array syntax for `v-bind:style` allows you to apply multiple style objects to the same element:
+Cú pháp kiểu array của `v-bind:style` cho phép bạn sử dụng nhiều object trong nó:
 
 ``` html
 <div v-bind:style="[baseStyles, overridingStyles]">
@@ -191,4 +193,4 @@ The array syntax for `v-bind:style` allows you to apply multiple style objects t
 
 ### Auto-prefixing
 
-When you use a CSS property that requires vendor prefixes in `v-bind:style`, for example `transform`, Vue will automatically detect and add appropriate prefixes to the applied styles.
+Khi bạn sử dụng các thuộc tính đòi hỏi phải thên prefix trong `v-bind:style`, ví dụ `transform`, Vue sẽ tự động phát hiện và thêm các prefix.
