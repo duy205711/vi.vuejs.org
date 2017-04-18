@@ -1,14 +1,16 @@
 ---
-title: Event Handling
+title: Xử lý event
 type: guide
 order: 9
 ---
 
-## Listening to Events
+## Lắng nghe Events
 
-We can use the `v-on` directive to listen to DOM events and run some JavaScript when they're triggered.
+> Mình sẽ sử dụng từ `event` như là một thuật ngữ, vì bạn sẽ gặp event ở rất nhiều tài liệu khác, và nó cũng thuận tiện cho bạn hơn khi code và khi tìm kiếm tài liệu.
 
-For example:
+Chúng ta có thể sử dụng directive `v-on` để lắng nghe các event của DOM và chạy một đoạn JavaScript nào đó khi các sự kiện này được trigger.
+
+Ví dụ:
 
 ``` html
 <div id="example-1">
@@ -25,7 +27,7 @@ var example1 = new Vue({
 })
 ```
 
-Result:
+Kết quả:
 
 {% raw %}
 <div id="example-1" class="demo">
@@ -42,11 +44,11 @@ var example1 = new Vue({
 </script>
 {% endraw %}
 
-## Method Event Handlers
+## Hàm xử lý event
 
-The logic for many event handlers will be more complex though, so keeping your JavaScript in the value of the `v-on` attribute simply isn't feasible. That's why `v-on` can also accept the name of a method you'd like to call.
+Logic để xử lý một event có thể sẽ trở nên rất phức tạp, vì vậy đặt một đoạn JavaScript dài trong trong attribute `v-on` là không khả thi. Đó là lý do tại sao bạn có thể truyền tên của một method vào `v-on`.
 
-For example:
+Ví dụ:
 
 ``` html
 <div id="example-2">
@@ -78,7 +80,7 @@ var example2 = new Vue({
 example2.greet() // -> 'Hello Vue.js!'
 ```
 
-Result:
+Kết quả:
 
 {% raw %}
 <div id="example-2" class="demo">
@@ -102,9 +104,9 @@ var example2 = new Vue({
 </script>
 {% endraw %}
 
-## Methods in Inline Handlers
+## Gọi hàm inline
 
-Instead of binding directly to a method name, we can also use methods in an inline JavaScript statement:
+Thay vì gọi trực tiếp method thông qua tên của nó, bạn cũng có thể gọi nó và truyền tham số vào như cách sử dụng hàm trong JavaScript:
 
 ``` html
 <div id="example-3">
@@ -123,7 +125,7 @@ new Vue({
 })
 ```
 
-Result:
+Kết quả:
 {% raw %}
 <div id="example-3" class="demo">
   <button v-on:click="say('hi')">Say hi</button>
@@ -141,7 +143,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Sometimes we also need to access the original DOM event in an inline statement handler. You can pass it into a method using the special `$event` variable:
+Đôi khi chúng ta cũng cần truy xuất vào các <span data-tooltip="Native Event, các tham số được HTML truyền vào hàm xử lý event.">tham số mặc định</span> của event. Bạn có thể sử dụng biến `$event` để truyền vào method:
 
 ``` html
 <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
@@ -158,11 +160,11 @@ methods: {
 }
 ```
 
-## Event Modifiers
+## Các Event Modifier
 
-It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
+Có một nhu cầu rất phổ biến là gọi method `event.preventDefault()` hoặc `event.stopPropagation()` trong khi xử lý event. Mặc dù chúng ta có thể thực hiện điều này rất đơn giản trong method, nhưng sẽ tốt hơn nếu như method của chúng ta chỉ chứa các logic để xử lý dữ liệu, thay vì chứa luôn code xử lý event của DOM.
 
-To address this problem, Vue provides **event modifiers** for `v-on`. Recall that modifiers are directive postfixes denoted by a dot.
+Để xử lý vấn đề này, Vue cung cấp các **event modifier** cho  `v-on`. Hãy nhớ lại rằng các modifier được sử dụng phía sau tên của directive và phân cách bởi dấu chấm.
 
 - `.stop`
 - `.prevent`
@@ -191,25 +193,26 @@ To address this problem, Vue provides **event modifiers** for `v-on`. Recall tha
 <div v-on:click.self="doThat">...</div>
 ```
 
-> New in 2.1.4
+> Điểm mới trong 2.1.4
+
 
 ``` html
 <!-- the click event will be triggered at most once -->
 <a v-on:click.once="doThis"></a>
 ```
 
-Unlike the other modifiers, which are exclusive to native DOM events, the `.once` modifier can also be used on [component events](components.html#Using-v-on-with-Custom-Events). If you haven't read about components yet, don't worry about this for now.
+Không giống như các modifier khác, chỉ hoạt động với các event mặc định của DOM. Modifier `.once` có thể được sử dụng cho các [component event](components.html#Using-v-on-with-Custom-Events). Nếu như bạn chưa bao giờ đọc về components, đừng lo về nó, bạn sẽ có thể đọc về nó sau.
 
-## Key Modifiers
+## Các Modifier Cho Phím
 
-When listening for keyboard events, we often need to check for common key codes. Vue also allows adding key modifiers for `v-on` when listening for key events:
+Khi bạn lắng nghe các sự kiện của bàn phím, chúng ta thường phải kiểm tra các mã phím thông dụng. Vue cho phép chúng ta thêm các modifier cho phím vào `v-on` khi lắng nghe các sự kiện về phím:
 
 ``` html
 <!-- only call vm.submit() when the keyCode is 13 -->
 <input v-on:keyup.13="submit">
 ```
 
-Remembering all the keyCodes is a hassle, so Vue provides aliases for the most commonly used keys:
+Nhớ tất cả các mã code thì rất đau đầu, vì vậy Vue cung cấp các <span data-tooltip="bí danh">alias</span> cho các phím thông dụng:
 
 ``` html
 <!-- same as above -->
@@ -219,11 +222,11 @@ Remembering all the keyCodes is a hassle, so Vue provides aliases for the most c
 <input @keyup.enter="submit">
 ```
 
-Here's the full list of key modifier aliases:
+Đây là sanh sách các bí danh thông dụng:
 
 - `.enter`
 - `.tab`
-- `.delete` (captures both "Delete" and "Backspace" keys)
+- `.delete` (Dùng cho cả phím "Delete" và "Backspace")
 - `.esc`
 - `.space`
 - `.up`
@@ -231,7 +234,7 @@ Here's the full list of key modifier aliases:
 - `.left`
 - `.right`
 
-You can also [define custom key modifier aliases](../api/#keyCodes) via the global `config.keyCodes` object:
+Bạn cũng có thể [tự định nghĩa các alias](../api/#keyCodes) cho riêng bạn thông qua `config.keyCodes`:
 
 ``` js
 // enable v-on:keyup.f1
@@ -240,18 +243,18 @@ Vue.config.keyCodes.f1 = 112
 
 ## Modifier Keys
 
-> New in 2.1.0
+> Điểm mới trong 2.1.0
 
-You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:
+Bạn có thể sử dụng các modifier dưới đây để giới hạn các các event của chuột hoặc bàn phím, để nó chỉ được trigger khi các phím modifier này được ấn:
 
 - `.ctrl`
 - `.alt`
 - `.shift`
 - `.meta`
 
-> Note: On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
+> Lưu ý: Trên bàn phím của hệ điều hành Macintosh, phím meta là phím command (⌘), còn của Windows nó là phím windows (⊞), của Sun Microsystems thì nó được đánh dấu là một hình thoi đậm màu (◆). Trên các bàn phím nhất định, đặt biệt là bàn phím của máy MIT và Lisp, như bàn phím Knight, space-cadet thì phím meta có ký hiệu là chữ "META". Trên bàn phím Symbolics, phím meta cũng được ký hiệu là "META" hoặc "Meta".
 
-For example:
+Ví dụ:
 
 ```html
 <!-- Alt + C -->
@@ -261,12 +264,12 @@ For example:
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
-## Why Listeners in HTML?
+## Tại sao phải lắng nghe event trong code HTML?
 
-You might be concerned that this whole event listening approach violates the good old rules about "separation of concerns". Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that's handling the current view, it won't cause any maintenance difficulty. In fact, there are several benefits in using `v-on`:
+Bạn có thể sẽ lo lắng rằng cách lắng nghe event trong code html này sẽ vi phạm các quy luật về <span data-tooltip="Tách biệt các mối e ngại">separation of concerns</span>. Hãy yên tâm - vì tất cả các hàm xử lý và biểu thức đều bị ràng buộc chặt chẽ bên trong ViewModel chịu trách nhiệm về view hiện tại, nó sẽ không gây ra bất cứ khó khăn nào cho việc bảo trì. Trong thực tế, có rất nhiều lợi ích khi sử dụng `v-on`: 
 
-1. It's easier to locate the handler function implementations within your JS code by simply skimming the HTML template.
+1. Dễ dàng hơn để xác định vị trí hiện thực hàm xử lý trong code JS của bạn bằng cách đơn giản là lướt qua HTML template.
 
-2. Since you don't have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
+2. Vì bạn không cần phải attach các hàm xử lý event trong code JS, ViewMode của bạn có thể có logic trong sáng hơn và không tác động lên DOM. Như vậy việc test sẽ dễ hơn.
 
-3. When a ViewModel is destroyed, all event listeners are automatically removed. You don't need to worry about cleaning it up yourself.
+3. Khi một ViewModel bị destroy, tất cả hàm xử lý event sẽ tự động bị loại bỏ. Bạn không cần phải lo lắng về việc loại bỏ nó một cách thủ công.
